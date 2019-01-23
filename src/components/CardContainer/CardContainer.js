@@ -1,9 +1,12 @@
 import React from 'react';
 import '../../main.scss';
+import Card from '../Card/Card';
 
 const CardContainer = () => {
     return (
-        <div>CardContainer</div>
+        <div>
+            <Card />
+        </div>
     )
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../main.scss';
 
-const Card = () => {
+const Card = (props) => {
     return (
         <div className='card'>
-            <h1 className='card-title'>Card Title</h1>
+            <h1 className='card-title'>{props.person.name}</h1>
             <p className='card-body'>Card body<br />Card body<br />Card body<br />Card body<br />Card body<br /></p>
         </div>
     )

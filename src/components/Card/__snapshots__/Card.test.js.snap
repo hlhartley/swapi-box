@@ -4,8 +4,24 @@ exports[`Card should match the snapshot with all data passed in correctly 1`] = 
 <div
   className="card"
 >
-  <h1>
-    Name
+  <h1
+    className="card-title"
+  >
+    Card Title
   </h1>
+  <p
+    className="card-body"
+  >
+    Card body
+    <br />
+    Card body
+    <br />
+    Card body
+    <br />
+    Card body
+    <br />
+    Card body
+    <br />
+  </p>
 </div>
 `;

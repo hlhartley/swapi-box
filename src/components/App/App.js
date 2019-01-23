@@ -11,11 +11,12 @@ class App extends Component {
     this.state = {
       navFixed: false,
       initialNavPosition: 0,
+      people: []
     };
   }
 
   componentDidMount() {
-    // const nav = document.querySelector('.navigation-container')
+    this.fetchPeople()
     window.addEventListener('scroll', this.fixNav.bind(this))
     this.setState({initialNavPosition: 250})
   }
@@ -28,6 +29,13 @@ class App extends Component {
     }
   }
 
+  fetchPeople() {
+    fetch('https://swapi.co/api/people/')
+      .then(response => response.json())
+      .then(result => this.setState({people: result.results}))
+      .catch(error => console.log(error))
+  }
+
   render() {
     return (
       <div className="App">
@@ -35,10 +43,11 @@ class App extends Component {
         <Navigation 
           navFixed={this.state.navFixed}
           iitialNavPosition={this.state.initialNavPosition}
+          people={this.state.people}
         />
         {/* <ScrollText /> */}
         <h2 className='card-container-title'>PEOPLE:</h2>
-        <CardContainer />
+        <CardContainer people={this.state.people}/>
       </div>
     );
   }

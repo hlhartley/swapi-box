@@ -4,7 +4,6 @@ exports[`CardContainer should match the snapshot with all data passed in correct
 <div
   className="card-container"
 >
-  Card Container:
   <Card />
 </div>
 `;

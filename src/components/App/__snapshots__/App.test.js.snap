@@ -8,6 +8,7 @@ exports[`App should match the snapshot with all data passed in correctly 1`] = `
   <Navigation
     iitialNavPosition={250}
     navFixed={false}
+    people={Array []}
   />
   <h2
     className="card-container-title"

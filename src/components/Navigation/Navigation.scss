@@ -11,29 +11,29 @@
     z-index: 1;
 }
 
-a {
+a,
+a:visited.people-link,
+a:visited.planets-link,
+a:visited.vehicles-link,
+a:visited.favorites-link {
     color: #e2dbd3;
     text-decoration: none;
     letter-spacing: 1px;
 }
 
-a:hover.people-link,
-a:visited.people-link {
+a:hover.people-link {
     color: #36898d;
 }
 
-a:hover.planets-link,
-a:visited.planets-link {
+a:hover.planets-link {
     color: #9e4e5f;
 }
 
-a:hover.vehicles-link,
-a:visited.vehicles-link {
+a:hover.vehicles-link {
     color: #419959;
 }
 
-a:hover.favorites-link,
-a:visited.favorites-link {
+a:hover.favorites-link {
     color: #c6c549;
 }
 

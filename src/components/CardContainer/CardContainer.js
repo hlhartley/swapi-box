@@ -5,7 +5,19 @@ import Card from '../Card/Card';
 const CardContainer = () => {
     return (
         <div className="card-container">
-            Card Container:
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
             <Card />
         </div>
     )

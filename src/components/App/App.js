@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../main.scss';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
-import ScrollText from '../ScrollText/ScrollText';
+// import ScrollText from '../ScrollText/ScrollText';
 import CardContainer from '../CardContainer/CardContainer';
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
           navFixed={this.state.navFixed}
           iitialNavPosition={this.state.initialNavPosition}
         />
-        <ScrollText />
+        {/* <ScrollText /> */}
         <CardContainer />
       </div>
     );

@@ -1,5 +1,8 @@
 .card-container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
     background-color: #f2f2f2;
     color: black;
-    padding: 40px;
+    padding: 45px;
 }

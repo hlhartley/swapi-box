@@ -10,24 +10,40 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
     SWAPI.
   </div>
   <a
+    className="people-link"
     href="www.google.com"
   >
-    People
+    <i
+      className="fas fa-male"
+    />
+     PEOPLE
   </a>
   <a
+    className="planets-link"
     href="www.google.com"
   >
-    Planets
+    <i
+      className="fas fa-globe"
+    />
+     PLANETS
   </a>
   <a
+    className="vehicles-link"
     href="www.google.com"
   >
-    Vehicles
+    <i
+      className="fas fa-fighter-jet"
+    />
+     VEHICLES
   </a>
   <a
+    className="favorites-link"
     href="www.google.com"
   >
-    View Favorites
+    <i
+      className="far fa-star"
+    />
+     FAVORITES
   </a>
 </div>
 `;

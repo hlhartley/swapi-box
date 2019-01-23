@@ -4,7 +4,7 @@
     justify-content: space-around;
     background-color: #011c44;
     color: #e2dbd3;
-    height: 68px;
+    height: 80px;
     position: relative;
     top: 0;
     transition: all 0.5s;
@@ -49,4 +49,31 @@ a:hover {
 
 .fixed-nav .logo {
     max-width: 500px;
+}
+
+.people-link,
+.planets-link,
+.vehicles-link,
+.favorites-link {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 35px;
+}
+
+.fa-male {
+    color: #36898d;
+}
+
+.fa-globe {
+    color: #9e4e5f;
+}
+
+.fa-fighter-jet {
+    color: #e25022;
+}
+
+.fa-star {
+    color: #c6c549;
 }

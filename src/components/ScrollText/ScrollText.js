@@ -3,7 +3,9 @@ import '../../main.scss';
 
 const ScrollText = () => {
     return (
-        <div className='scroll-text'>ScrollText</div>
+        <div className='scroll-text'>
+        <img src='./images/light-saber.png'/>
+        ScrollText</div>
     )
 }
 

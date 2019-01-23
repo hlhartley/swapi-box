@@ -1,9 +1,9 @@
 import React from 'react';
 import '../../main.scss';
 
-const Navigation = () => {
+const Navigation = (props) => {
     return (
-        <div className='navigation-container'>
+        <div className={ props.navFixed ? "navigation-container fixed-nav" : "navigation-container" }>
             <div className='logo'>SWAPI.</div>
             <a href='www.google.com'>People</a>
             <a href='www.google.com'>Planets</a>

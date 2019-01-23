@@ -26,15 +26,15 @@ a:hover {
     border-bottom: 1px solid #8895ab;
 }
 
-// .fixed-nav {
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-around;
-//     position: fixed;
-//     box-shadow: 0 5px rgba(0, 0, 0, 0.1);
-//     background-color: #443d35;
-//     width: 100%;
-// }
+.fixed-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #443d35;
+    width: 100%;
+}
 
 .logo {
     max-width: 0;
@@ -47,6 +47,6 @@ a:hover {
     margin: -35px;
 }
 
-// .fixed-nav .logo {
-//     max-width: 500px;
-// }
+.fixed-nav .logo {
+    max-width: 500px;
+}

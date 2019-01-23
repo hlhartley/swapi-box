@@ -4,7 +4,7 @@ import Header from './Header';
 import { shallow } from 'enzyme';
 
 let wrapper;
-describe('App', () => {
+describe('Header', () => {
 
   beforeEach(() => {
     wrapper = shallow(<Header/>); 

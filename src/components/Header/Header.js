@@ -3,7 +3,7 @@ import '../../main.scss';
 
 const Header = () => {
     return (
-        <div className='header'>Header</div>
+        <div className='header'>SWAPI-box</div>
     )
 }
 

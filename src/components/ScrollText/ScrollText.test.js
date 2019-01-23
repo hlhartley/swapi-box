@@ -16,7 +16,6 @@ describe('ScrollText', () => {
     ReactDOM.unmountComponentAtNode(div);
 })
 
-
   it('should exist', () => {   
     expect(wrapper).toBeDefined()
   })

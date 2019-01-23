@@ -1,3 +1,10 @@
 .header {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
     color: purple;
+    height: 30vh;
+    background-color: black;
+    font-size: 40px;
 }

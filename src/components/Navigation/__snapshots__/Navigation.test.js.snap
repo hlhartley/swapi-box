@@ -2,8 +2,32 @@
 
 exports[`Navigation should match the snapshot with all data passed in correctly 1`] = `
 <div
-  className="navigation"
+  className="navigation-container"
 >
-  Navigation
+  <div
+    className="logo"
+  >
+    SWAPI.
+  </div>
+  <a
+    href="www.google.com"
+  >
+    People
+  </a>
+  <a
+    href="www.google.com"
+  >
+    Planets
+  </a>
+  <a
+    href="www.google.com"
+  >
+    Vehicles
+  </a>
+  <a
+    href="www.google.com"
+  >
+    View Favorites
+  </a>
 </div>
 `;

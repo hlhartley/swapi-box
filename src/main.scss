@@ -6,8 +6,12 @@
 @import './components/Header/Header';
 @import './components/Navigation/Navigation';
 @import './components/ScrollText/ScrollText';
+@import url('https://fonts.googleapis.com/css?family=Play');
+@import url('https://fonts.googleapis.com/css?family=Rajdhani');
 
 * {
-    font-family: 'arial';
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+    font-size: 18px;
 }
 

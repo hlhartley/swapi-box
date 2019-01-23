@@ -3,8 +3,15 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    color: purple;
-    height: 30vh;
-    background-color: black;
-    font-size: 40px;
+    color: black;
+    height: 250px;
+    background: url(images/r2d2-image.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 320px;
+}
+
+.header-text {
+    font-family: 'Play', sans-serif;
+    font-size: 60px;
+    margin-left: -210px;
 }

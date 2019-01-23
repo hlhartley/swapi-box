@@ -4,6 +4,10 @@ exports[`Header should match the snapshot with all data passed in correctly 1`] 
 <div
   className="header"
 >
-  SWAPI-box
+  <h1
+    className="header-text"
+  >
+    SWAPI-box
+  </h1>
 </div>
 `;

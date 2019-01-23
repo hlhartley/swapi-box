@@ -2,7 +2,7 @@ import React from 'react';
 import '../../main.scss';
 import Card from '../Card/Card';
 
-const CardContainer = (props) => {
+const CardContainer = () => {
     return (
         <div className="card-container">
             Card Container:

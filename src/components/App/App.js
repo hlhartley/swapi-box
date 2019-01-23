@@ -17,7 +17,7 @@ class App extends Component {
   componentDidMount() {
     const nav = document.querySelector('.navigation-container')
     window.addEventListener('scroll', this.fixNav.bind(this))
-    this.setState({initialNavPosition: nav.offsetTop})
+    this.setState({initialNavPosition: 250})
   }
 
   fixNav() {

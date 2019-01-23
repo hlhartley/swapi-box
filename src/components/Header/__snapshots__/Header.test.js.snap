@@ -7,7 +7,12 @@ exports[`Header should match the snapshot with all data passed in correctly 1`] 
   <h1
     className="header-text"
   >
-    SWAPI-box
+    SWAPI
+    <img
+      className="light-saber"
+      src="light-saber.png"
+    />
+    BOX
   </h1>
 </div>
 `;

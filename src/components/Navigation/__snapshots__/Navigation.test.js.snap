@@ -7,7 +7,7 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
   <div
     className="logo"
   >
-    SWAPI.
+    SWAPI-BOX
   </div>
   <a
     className="people-link"
@@ -43,7 +43,7 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
     <i
       className="far fa-star"
     />
-     FAVORITES
+     FAVORITES [0]
   </a>
 </div>
 `;

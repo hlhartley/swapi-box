@@ -4,7 +4,8 @@ import Card from '../Card/Card';
 
 const CardContainer = () => {
     return (
-        <div>
+        <div className='card-container'>
+            Card Container
             <Card />
         </div>
     )

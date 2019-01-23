@@ -3,7 +3,7 @@ import '../../main.scss';
 
 const ScrollText = () => {
     return (
-        <div>ScrollText</div>
+        <div className='scroll-text'>ScrollText</div>
     )
 }
 

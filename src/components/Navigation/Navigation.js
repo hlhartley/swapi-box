@@ -3,7 +3,7 @@ import '../../main.scss';
 
 const Navigation = () => {
     return (
-        <div>Navigation</div>
+        <div className='navigation'>Navigation</div>
     )
 }
 

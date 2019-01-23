@@ -2,7 +2,7 @@
 A web-based React app
 
 ## Main Page Wireframe:
-![Wireframe](terminal-commander-screenshot.png)
+![Wireframe](swapi-box-wireframe-main.png)
 
 ## Component Wireframe:
-![Wireframe](terminal-commander-wireframe.png)
+![Wireframe](swapi-box-wireframe-component.png)

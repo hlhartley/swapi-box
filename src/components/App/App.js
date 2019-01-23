@@ -37,6 +37,7 @@ class App extends Component {
           iitialNavPosition={this.state.initialNavPosition}
         />
         {/* <ScrollText /> */}
+        <h2 className='card-container-title'>PEOPLE:</h2>
         <CardContainer />
       </div>
     );

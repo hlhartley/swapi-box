@@ -17,12 +17,24 @@ a {
     letter-spacing: 1px;
 }
 
-a:visited {
-    color: #e2dbd3;
+a:hover.people-link,
+a:visited.people-link {
+    color: #36898d;
 }
 
-a:hover {
-    color: #8895ab;
+a:hover.planets-link,
+a:visited.planets-link {
+    color: #9e4e5f;
+}
+
+a:hover.vehicles-link,
+a:visited.vehicles-link {
+    color: #419959;
+}
+
+a:hover.favorites-link,
+a:visited.favorites-link {
+    color: #c6c549;
 }
 
 .fixed-nav {

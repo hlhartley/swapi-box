@@ -14,12 +14,12 @@ class App extends Component {
       people: [],
       planets: [],
       vehicles: [],
-      selected: ''
+      selected: 'people'
     };
   }
 
-  componentDidMount() {
-    this.fetchPeople()
+  async componentDidMount() {
+    await this.fetchPeople()
     this.fetchPlanets()
     this.fetchVehicles()
     window.addEventListener('scroll', this.fixNav.bind(this))
@@ -34,25 +34,38 @@ class App extends Component {
     }
   }
 
-  fetchPeople() {
+  async fetchPeople() {
     let peopleArray = []
     for(let i=1; i < 10; i++) {
-      fetch(`https://swapi.co/api/people/?page=${i}`)
-      .then(response => response.json())
-      .then(people => this.fetchHomeworld(people.results))
-      .then(peopleWithHometowns => peopleArray.push(...peopleWithHometowns))
-      .catch(error => console.log(error))
+      const url = `https://swapi.co/api/people/?page=${i}`
+      const response = await fetch(url)
+      const people = await response.json()
+      const peopleWithHometowns = await this.fetchHomeworld(people.results)
+      await peopleArray.push(...peopleWithHometowns)
     }
     this.setState({people: peopleArray})
   }
 
   fetchHomeworld(people) {
-    const unresolvedPromises = people.map((member) => {
-      return fetch(member.homeworld)
-      .then(response => response.json())
-      .then(homeworld => ({ name: member.name, homeworld: homeworld.name, population: homeworld.population }))
-    })
-    return Promise.all(unresolvedPromises)
+    return Promise.all(people.map(async (member) => {
+      const response = await fetch(member.homeworld)
+      const homeworld = await response.json()
+      return { 
+        name: member.name, 
+        homeworld: homeworld.name, 
+        population: homeworld.population 
+      }
+    }))
+    // const unresolvedPromises = people.map((member) => {
+    //   return fetch(member.homeworld)
+    //   .then(response => response.json())
+    //   .then(homeworld => ({ name: member.name, homeworld: homeworld.name, population: homeworld.population }))
+    // })
+    // return Promise.all(unresolvedPromises)
+  }
+
+  fetchSpecies() {
+
   }
 
   fetchPlanets() {
@@ -74,11 +87,7 @@ class App extends Component {
   }
 
   returnCards = () => {
-    if(this.state.selected === 'people') {
-      return this.state.people       
-    } else {
-      return []
-    }
+      return this.state[this.state.selected] || []          
   }
 
   render() {
@@ -95,7 +104,7 @@ class App extends Component {
           // fetchVehicles={this.fetchVehicles}
         />
         {/* <ScrollText /> */}
-        <h2 className='card-container-title'>PEOPLE:</h2>
+        <h2 className='card-container-title'>{this.state.selected.toUpperCase()}</h2>
         <CardContainer category={this.returnCards()}/>
       </div>
     );

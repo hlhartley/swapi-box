@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../main.scss';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
-// import ScrollText from '../ScrollText/ScrollText';
+import ScrollText from '../ScrollText/ScrollText';
 import CardContainer from '../CardContainer/CardContainer';
 
 class App extends Component {
@@ -14,7 +14,7 @@ class App extends Component {
       people: [],
       planets: [],
       vehicles: [],
-      selected: 'people'
+      selected: ''
     };
   }
 
@@ -61,8 +61,8 @@ class App extends Component {
 
   async fetchPeople() {
     let peopleArray = []
-    for(let i=1; i < 10; i++) {
-      const url = `https://swapi.co/api/people/?page=${i}`
+    // for(let i=1; i < 10; i++) {
+      const url = `https://swapi.co/api/people/`
       const response = await fetch(url)
       const people = await response.json()
       const peopleWithIds = people.results.map(person => {
@@ -73,7 +73,7 @@ class App extends Component {
       // const peopleWithHometowns = await this.fetchHomeworld(people.results)
       const peopleWithSpecies = await this.fetchSpecies(peopleWithHometowns)
       peopleArray.push(...peopleWithSpecies)
-    }
+    // }
     this.setState({people: peopleArray})
   }
 
@@ -135,6 +135,14 @@ class App extends Component {
       return this.state[this.state.selected] || []          
   }
 
+  renderScreen = () => {
+    if(this.state.selected === '') {
+      return <ScrollText />
+    } else {
+      return <CardContainer category={this.returnCards()}/>
+    }
+  }
+  
   render() {
     return (
       <div className="App">
@@ -148,9 +156,8 @@ class App extends Component {
           // fetchPlanets={this.fetchPlanets}
           // fetchVehicles={this.fetchVehicles}
         />
-        {/* <ScrollText /> */}
-        <h2 className='card-container-title'>{this.state.selected.toUpperCase()}</h2>
-        <CardContainer category={this.returnCards()}/>
+        {/* <h2 className='card-container-title'>{this.state.selected.toUpperCase()}</h2> */}
+        {this.renderScreen()}
       </div>
     );
   }

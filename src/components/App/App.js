@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       navFixed: false,
       initialNavPosition: 0,
+      film: [],
       people: [],
       planets: [],
       vehicles: [],
@@ -19,7 +20,8 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await this.fetchPeople()
+    await this.fetchFilms()
+    this.fetchPeople()
     this.fetchPlanets()
     this.fetchVehicles()
     window.addEventListener('scroll', this.fixNav.bind(this))
@@ -53,6 +55,14 @@ class App extends Component {
 
   // 4. You could then get the planet's residents with something like planet.residents.map(resident => peopleHash[this.extractID(resident)])
 
+
+  async fetchFilms() {
+    const url = `https://swapi.co/api/films/1/`
+    const response = await fetch(url)
+    const result = await response.json()
+    const film = ({title: result.title, scrollText: result.opening_crawl, episode: result.episode_id})
+    this.setState({film})
+  }
 
   extractID(url) {
     // Probably a more efficient way to do this... Perhaps some regex would be faster?
@@ -137,7 +147,7 @@ class App extends Component {
 
   renderScreen = () => {
     if(this.state.selected === '') {
-      return <ScrollText />
+      return <ScrollText film={this.state.film}/>
     } else {
       return <CardContainer category={this.returnCards()}/>
     }

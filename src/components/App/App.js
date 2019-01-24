@@ -35,10 +35,24 @@ class App extends Component {
   }
 
   fetchPeople() {
-    fetch('https://swapi.co/api/people/')
+    let peopleArray = []
+    for(let i=1; i < 10; i++) {
+      fetch(`https://swapi.co/api/people/?page=${i}`)
       .then(response => response.json())
-      .then(result => this.setState({people: result.results}))
+      .then(people => this.fetchHomeworld(people.results))
+      .then(peopleWithHometowns => peopleArray.push(...peopleWithHometowns))
       .catch(error => console.log(error))
+    }
+    this.setState({people: peopleArray})
+  }
+
+  fetchHomeworld(people) {
+    const unresolvedPromises = people.map((member) => {
+      return fetch(member.homeworld)
+      .then(response => response.json())
+      .then(homeworld => ({ name: member.name, homeworld: homeworld.name, population: homeworld.population }))
+    })
+    return Promise.all(unresolvedPromises)
   }
 
   fetchPlanets() {
@@ -82,7 +96,7 @@ class App extends Component {
         />
         {/* <ScrollText /> */}
         <h2 className='card-container-title'>PEOPLE:</h2>
-        <CardContainer people={this.returnCards()}/>
+        <CardContainer category={this.returnCards()}/>
       </div>
     );
   }

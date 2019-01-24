@@ -5,8 +5,8 @@ import Card from '../Card/Card';
 const CardContainer = (props) => {
     return (
         <div className="card-container">
-            {props.category.map((person) => {
-                return (<Card person={person}/>)
+            {props.category.map((property) => {
+                return (<Card property={property} selected={props.selected}/>)
             })}
         </div>
     )

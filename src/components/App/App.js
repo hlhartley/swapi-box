@@ -149,7 +149,7 @@ class App extends Component {
     if(this.state.selected === '') {
       return <ScrollText film={this.state.film}/>
     } else {
-      return <CardContainer category={this.returnCards()}/>
+      return <CardContainer category={this.returnCards()} selected={this.state.selected}/>
     }
   }
   

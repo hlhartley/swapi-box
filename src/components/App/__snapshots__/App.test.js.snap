@@ -6,17 +6,13 @@ exports[`App should match the snapshot with all data passed in correctly 1`] = `
 >
   <Header />
   <Navigation
-    iitialNavPosition={250}
+    iitialNavPosition={0}
     navFixed={false}
     people={Array []}
+    receiveSelected={[Function]}
   />
-  <h2
-    className="card-container-title"
-  >
-    PEOPLE:
-  </h2>
-  <CardContainer
-    people={Array []}
+  <ScrollText
+    film={Array []}
   />
 </div>
 `;

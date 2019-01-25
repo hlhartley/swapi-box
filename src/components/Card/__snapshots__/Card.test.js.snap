@@ -1,3 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card should match the snapshot with all data passed in correctly 1`] = `undefined`;
+exports[`Card should match the snapshot with all data passed in correctly 1`] = `
+<div
+  className="card"
+>
+  <h1
+    className="card-title"
+  >
+    Alderaan
+    <i
+      className="far fa-star"
+    />
+  </h1>
+  <p
+    className="card-body"
+  >
+    Terrain: 
+    grasslands, mountains
+    <br />
+    Population: 
+    2000000000
+    <br />
+    Climate: 
+    temperate
+    <br />
+    Residents: 
+  </p>
+</div>
+`;

@@ -116,18 +116,13 @@ class App extends Component {
       }
     })
     return Promise.all(unresolvedPromises)
-    // return Promise.all(people.map(async (member) => {
-    //   const response = await fetch(member.species[0])
-    //   const species = await response.json()
-    //   return ({species: species.name})
-    // }))
   }
 
-  fetchPlanets() {
-    fetch('https://swapi.co/api/planets/')
-      .then(response => response.json())
-      .then(result => this.setState({planets: result.results}))
-      .catch(error => console.log(error))
+  async fetchPlanets() {
+    const url = 'https://swapi.co/api/planets/'
+    const response = await fetch(url)
+    const planets = await response.json()
+    this.setState({planets: planets.results})
   }
 
   fetchVehicles() {
@@ -166,7 +161,6 @@ class App extends Component {
           // fetchPlanets={this.fetchPlanets}
           // fetchVehicles={this.fetchVehicles}
         />
-        {/* <h2 className='card-container-title'>{this.state.selected.toUpperCase()}</h2> */}
         {this.renderScreen()}
       </div>
     );

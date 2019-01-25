@@ -25,14 +25,21 @@ describe('App', () => {
   })
 
   it('should render the CardContainer, Header, Navigation, and ScrollText components', () => {
-    expect(wrapper.find('CardContainer').length).toEqual(1)
+    // expect(wrapper.find('CardContainer').length).toEqual(1)
     expect(wrapper.find('Header').length).toEqual(1)
     expect(wrapper.find('Navigation').length).toEqual(1)
     expect(wrapper.find('ScrollText').length).toEqual(1)
   })
 
-  // it.skip('should have a proper default state', () => {
-  //   expect(wrapper.state()).toEqual({
-      
-  //   })
+  it('should have a proper default state', () => {
+    expect(wrapper.state()).toEqual({
+      navFixed: false,
+      initialNavPosition: 0,
+      film: [],
+      people: [],
+      planets: [],
+      vehicles: [],
+      selected: ''
+    })  
   })
+})

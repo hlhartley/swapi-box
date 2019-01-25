@@ -4,10 +4,10 @@ import '../../main.scss';
 const ScrollText = (props) => {
     return (
         <div className='scroll-text-container'>
-        <div class="fade"></div>
-        <section class="star-wars">
-        <div class="crawl">
-            <div class="title">
+        <div className="fade"></div>
+        <section className="star-wars">
+        <div className="crawl">
+            <div className="title">
             <p>Episode IV</p>
             <h1>{props.film.title}</h1>
             </div>

@@ -13,6 +13,7 @@ class App extends Component {
       initialNavPosition: 0,
       film: [],
       people: [],
+      peopleNameLookup: {},
       planets: [],
       vehicles: [],
       selected: ''
@@ -21,8 +22,12 @@ class App extends Component {
 
   async componentDidMount() {
     await this.fetchFilms()
-    this.fetchPeople()
-    this.fetchPlanets()
+    await this.fetchPeople()
+
+    let x = Date.now()
+    await this.fetchPlanets()
+    console.log(Date.now() - x);
+
     this.fetchVehicles()
     window.addEventListener('scroll', this.fixNav.bind(this))
     this.setState({initialNavPosition: 250})
@@ -64,27 +69,28 @@ class App extends Component {
     this.setState({film})
   }
 
-  extractID(url) {
-    // Probably a more efficient way to do this... Perhaps some regex would be faster?
+  extractIdFrom(url) {
     return url.split('/').slice(-2, -1)[0];
   }
 
   async fetchPeople() {
-    let peopleArray = []
-    // for(let i=1; i < 10; i++) {
-      const url = `https://swapi.co/api/people/`
+    const peopleArray = [];
+    const peopleNameLookup = {};
+    for(let i=1; i < 10; i++) {
+      const url = `https://swapi.co/api/people/?page=${i}`
       const response = await fetch(url)
       const people = await response.json()
       const peopleWithIds = people.results.map(person => {
-        person.id = this.extractID(person.url);
+        person.id = this.extractIdFrom(person.url);
+        peopleNameLookup[person.id] = person.name;
         return person;
       })
       const peopleWithHometowns = await this.fetchHomeworld(peopleWithIds)
-      // const peopleWithHometowns = await this.fetchHomeworld(people.results)
       const peopleWithSpecies = await this.fetchSpecies(peopleWithHometowns)
       peopleArray.push(...peopleWithSpecies)
-    // }
-    this.setState({people: peopleArray})
+    }
+    this.setState({people: peopleArray});
+    this.setState({peopleNameLookup: peopleNameLookup});
   }
 
   fetchHomeworld(people) {
@@ -122,7 +128,20 @@ class App extends Component {
     const url = 'https://swapi.co/api/planets/'
     const response = await fetch(url)
     const planets = await response.json()
-    this.setState({planets: planets.results})
+
+    let planetsWithResidentNames = planets.results.map((planet) => {
+      planet.residents = planet.residents.map((resident) => {
+        return this.extractIdFrom(resident)
+      }).map((residentId) => {
+        return this.state.peopleNameLookup[residentId];
+
+        // const matchingPerson = this.state.people.find(person => person.id === residentId)
+        // return matchingPerson ? matchingPerson.name : 'unknown';
+      })
+      return planet;
+    })
+
+    this.setState({planets: planetsWithResidentNames})
   }
 
   fetchVehicles() {

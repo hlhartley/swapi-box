@@ -42,4 +42,14 @@ describe('App', () => {
       selected: ''
     })  
   })
+
+  it('extractIdFrom method should extract the people id from the URL', () => {
+    const mockUrl = 'https://swapi.co/api/people/5/'
+    const peopleId = wrapper.instance().extractIdFrom(mockUrl)
+    expect(peopleId).toEqual('5')
+
+    const mockUrl2 = 'https://swapi.co/api/people/37/'
+    const peopleId2 = wrapper.instance().extractIdFrom(mockUrl2)
+    expect(peopleId2).toEqual('37')
+  })
 })

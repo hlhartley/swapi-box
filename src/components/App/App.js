@@ -13,7 +13,7 @@ class App extends Component {
       initialNavPosition: 0,
       film: [],
       people: [],
-      peopleNameLookup: {},
+      // peopleNameLookup: {},
       planets: [],
       vehicles: [],
       selected: ''
@@ -23,11 +23,7 @@ class App extends Component {
   async componentDidMount() {
     await this.fetchFilms()
     await this.fetchPeople()
-
-    let x = Date.now()
     await this.fetchPlanets()
-    console.log(Date.now() - x);
-
     this.fetchVehicles()
     window.addEventListener('scroll', this.fixNav.bind(this))
     this.setState({initialNavPosition: 250})
@@ -82,7 +78,7 @@ class App extends Component {
       const people = await response.json()
       const peopleWithIds = people.results.map(person => {
         person.id = this.extractIdFrom(person.url);
-        peopleNameLookup[person.id] = person.name;
+        // peopleNameLookup[person.id] = person.name;
         return person;
       })
       const peopleWithHometowns = await this.fetchHomeworld(peopleWithIds)
@@ -90,7 +86,7 @@ class App extends Component {
       peopleArray.push(...peopleWithSpecies)
     }
     this.setState({people: peopleArray});
-    this.setState({peopleNameLookup: peopleNameLookup});
+    // this.setState({peopleNameLookup: peopleNameLookup});
   }
 
   fetchHomeworld(people) {
@@ -131,12 +127,12 @@ class App extends Component {
 
     let planetsWithResidentNames = planets.results.map((planet) => {
       planet.residents = planet.residents.map((resident) => {
-        return this.extractIdFrom(resident)
-      }).map((residentId) => {
-        return this.state.peopleNameLookup[residentId];
-
-        // const matchingPerson = this.state.people.find(person => person.id === residentId)
-        // return matchingPerson ? matchingPerson.name : 'unknown';
+        return this.extractIdFrom(resident);
+        // return this.state.peopleNameLookup[this.extractIdFrom(resident)];
+      })
+      .map((residentId) => {
+        const matchingPerson = this.state.people.find(person => person.id === residentId)
+        return matchingPerson ? matchingPerson.name : 'unknown';
       })
       return planet;
     })

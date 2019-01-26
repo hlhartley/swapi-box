@@ -24,11 +24,14 @@ describe('App', () => {
     expect(wrapper).toMatchSnapshot();
   })
 
-  it('should render the CardContainer, Header, Navigation, and ScrollText components', () => {
-    // expect(wrapper.find('CardContainer').length).toEqual(1)
+  it('should render the Header, Navigation, and ScrollText and CardContainer components', () => {
     expect(wrapper.find('Header').length).toEqual(1)
     expect(wrapper.find('Navigation').length).toEqual(1)
     expect(wrapper.find('ScrollText').length).toEqual(1)
+
+    wrapper.instance().renderScreen()
+    wrapper.setState({selected: 'people'})
+    expect(wrapper.find('CardContainer').length).toEqual(1)
   })
 
   it('should have a proper default state', () => {

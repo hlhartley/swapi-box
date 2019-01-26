@@ -13,7 +13,6 @@ class App extends Component {
       initialNavPosition: 0,
       film: [],
       people: [],
-      // peopleNameLookup: {},
       planets: [],
       vehicles: [],
       selected: '',
@@ -103,7 +102,7 @@ class App extends Component {
     const unresolvedPromises = people.map((member) => {
       return fetch(member.homeworld)
       .then(response => response.json())
-      .then(homeworld => ({ id: member.id, name: member.name, homeworld: homeworld.name, population: homeworld.population, species: member.species[0] }))
+      .then(homeworld => ({ key: member.id, name: member.name, homeworld: homeworld.name, population: homeworld.population, species: member.species[0] }))
     })
     return Promise.all(unresolvedPromises)
   }
@@ -164,7 +163,8 @@ class App extends Component {
     }
   }
 
-  clickFavoriteBtn = (cardId) => {
+  clickFavoriteBtn = (e, cardId) => {
+    e.preventDefault()
     this.setState({favoritedCards: cardId})
   }
   

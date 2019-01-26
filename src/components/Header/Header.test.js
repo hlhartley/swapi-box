@@ -16,16 +16,11 @@ describe('Header', () => {
     ReactDOM.unmountComponentAtNode(div);
 })
 
-  it.skip('should exist', () => {   
+  it('should exist', () => {   
     expect(wrapper).toBeDefined()
   })
 
-  it.skip('should match the snapshot with all data passed in correctly', () => {
+  it('should match the snapshot with all data passed in correctly', () => {
     expect(wrapper).toMatchSnapshot();
   })
-
-  // it.skip('should have a proper default state', () => {
-  //   expect(wrapper.state()).toEqual({
-      
-  //   })
-  })
+})

@@ -2,7 +2,7 @@
 
 exports[`Navigation should match the snapshot with all data passed in correctly 1`] = `
 <div
-  className="navigation-container"
+  className="navigation-container fixed-nav"
 >
   <div
     className="logo"

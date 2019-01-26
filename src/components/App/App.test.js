@@ -39,9 +39,14 @@ describe('App', () => {
       people: [],
       planets: [],
       vehicles: [],
-      selected: ''
+      selected: '',
+      favoritedCards: []
     })  
   })
+
+  // it.skip('fixNav method', () => {
+    
+  // })
 
   it('extractIdFrom method should extract the people id from the URL', () => {
     const mockUrl = 'https://swapi.co/api/people/5/'
@@ -52,4 +57,24 @@ describe('App', () => {
     const peopleId2 = wrapper.instance().extractIdFrom(mockUrl2)
     expect(peopleId2).toEqual('37')
   })
+
+  // it('receiveSelected method', () => {
+    
+  // })
+
+  // it('returnCards method', () => {
+    
+  // })
+
+  // it('renderScreen method', () => {
+    
+  // })
+
+  // it('clickFavoriteBtn method', () => {
+    
+  // })
+
+  // Test allFetchCalls
 })
+
+

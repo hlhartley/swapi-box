@@ -6,26 +6,26 @@ import { shallow } from 'enzyme';
 let wrapper;
 describe('ScrollText', () => {
 
+  const film = { 
+    episode: 4,
+    scrollText: "It is a period of civil war.\r\nRebel spaceships, striking\r\nfrom a hidden base, have won\r\ntheir first victory against\r\nthe evil Galactic Empire.\r\n\r\nDuring the battle, Rebel\r\nspies managed to steal secre…",
+    title: "A New Hope"
+  }
+
   beforeEach(() => {
-    wrapper = shallow(<ScrollText/>); 
+    wrapper = shallow(<ScrollText film={film}/>); 
   })
 
-  it.skip('renders without crashing', () => {
+  it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<ScrollText/>, div);
     ReactDOM.unmountComponentAtNode(div);
 })
 
-  it.skip('should exist', () => {   
+  it('should exist', () => {   
     expect(wrapper).toBeDefined()
   })
 
-  it.skip('should match the snapshot with all data passed in correctly', () => {
+  it('should match the snapshot with all data passed in correctly', () => {
     expect(wrapper).toMatchSnapshot();
   })
-
-  // it.skip('should have a proper default state', () => {
-  //   expect(wrapper.state()).toEqual({
-      
-  //   })
-  })
+})

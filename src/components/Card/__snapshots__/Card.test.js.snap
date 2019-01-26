@@ -8,9 +8,14 @@ exports[`Card should match the snapshot with all data passed in correctly 1`] = 
     className="card-title"
   >
     Alderaan
-    <i
-      className="far fa-star"
-    />
+    <a
+      href="www.google.com"
+      onClick={[Function]}
+    >
+      <i
+        className="far fa-star"
+      />
+    </a>
   </h1>
   <p
     className="card-body"
@@ -25,6 +30,9 @@ exports[`Card should match the snapshot with all data passed in correctly 1`] = 
     temperate
     <br />
     Residents: 
+    1. https://swapi.co/api/people/5/ 
+    2. https://swapi.co/api/people/68/ 
+    3. https://swapi.co/api/people/81/ 
   </p>
 </div>
 `;

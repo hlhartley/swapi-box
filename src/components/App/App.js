@@ -16,7 +16,8 @@ class App extends Component {
       // peopleNameLookup: {},
       planets: [],
       vehicles: [],
-      selected: ''
+      selected: '',
+      favoritedCards: []
     };
   }
 
@@ -159,8 +160,12 @@ class App extends Component {
     if(this.state.selected === '') {
       return <ScrollText film={this.state.film}/>
     } else {
-      return <CardContainer category={this.returnCards()} selected={this.state.selected}/>
+      return <CardContainer category={this.returnCards()} selected={this.state.selected} clickFavoriteButton={this.clickFavoriteButton}/>
     }
+  }
+
+  clickFavoriteBtn = (cardId) => {
+    this.setState({favoritedCards: cardId})
   }
   
   render() {

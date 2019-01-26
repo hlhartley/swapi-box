@@ -25,11 +25,10 @@ class Card extends Component {
 }
 
     render() {
-        console.log('property', this.props.property)
-        console.log('selected', this.props.selected)
+
         return (
             <div className='card'>
-                <h1 className='card-title'>{this.props.property.name}<i className="far fa-star"></i></h1>
+                <h1 className='card-title'>{this.props.property.name}<button onClick={() => this.props.clickFavoriteButton}><i className="far fa-star"></i></button></h1>
                 {this.renderCards()}
             </div>
         )

@@ -1,10 +1,10 @@
 .navigation-container {
-    display: flex;
     align-items: center;
-    justify-content: center;
     background-color: #011c44;
-    color: #e2dbd3;
+    color: $main-white-color;
+    display: flex;
     height: 87px;
+    justify-content: center;
     position: relative;
     top: 0;
     transition: all 0.5s;
@@ -16,89 +16,87 @@ a:visited.people-link,
 a:visited.planets-link,
 a:visited.vehicles-link,
 a:visited.favorites-link {
-    color: #e2dbd3;
+    color: $main-white-color;
     text-decoration: none;
     letter-spacing: 1px;
 }
 
 a:hover.people-link {
-    color: #36898d;
+    color: $main-turquoise-color;
 }
 
 a:hover.planets-link {
-    color: #9e4e5f;
+    color: $main-dark-red-color;
 }
 
 a:hover.vehicles-link {
-    color: #419959;
+    color: $main-green-color;
 }
 
 a:hover.favorites-link {
-    color: #c6c549;
+    color: $main-yellow-color;
 }
 
 .fixed-nav {
-    display: flex;
     align-items: center;
+    background-color: black;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
     justify-content: space-around;
     position: fixed;
-    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
-    background-color: black;
     width: 100%;
 }
 
 .logo {
+    background: #fff;
+    color: black;
+    font-weight: 600;
     max-width: 0;
     overflow: hidden;
-    background: white;
     transition: all 0.4s;
-    font-weight: 600;
-    color: black;
 }
 
 .fixed-nav .logo {
+    align-items: center;
     display: flex;
     flex-direction: column; 
-    max-width: 500px;
     font-size: 22px;
+    height: 50px;
     justify-content: center;
-    align-items: center;
+    max-width: 500px;
     margin: 10px;
     width: 150px;
-    height: 50px;
 }
 
 .people-link,
 .planets-link,
 .vehicles-link,
 .favorites-link {
+    align-items: center;
     display: flex;
     flex-flow: column;
     justify-content: center;
-    align-items: center;
     line-height: 35px;
-    // border-left: 1px solid #e2dbd3;
-    // border-right: 1px solid #e2dbd3;
-    padding: 10px;
     margin-left: 20px;
     margin-right: 20px;
+    padding: 10px;
     width: 200px;
 }
 
 .fa-male {
-    color: #36898d;
+    color: $main-turquoise-color;
 }
 
 .fa-globe {
-    color: #9e4e5f;
+    color: $main-dark-red-color;
 }
 
 .fa-fighter-jet {
-    color: #419959;
+    color: $main-green-color;
 }
 
 .fa-star {
-    color: #c6c549;
+    color: $main-yellow-color;
 }
 
 .fas,

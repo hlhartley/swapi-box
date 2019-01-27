@@ -1,28 +1,28 @@
 .header {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
     align-items: center;
-    color: black;
-    height: 225px;
     background: url(images/r2d2-image.jpg);
     background-repeat: no-repeat;
     background-size: 102% 311px;
+    color: black;
+    display: flex;
+    flex-flow: column;
+    height: 225px;
+    justify-content: center;
 }
 
 .header-text {
-    font-family: 'Orbitron', sans-serif;
+    color: #011c44;
+    font-family: $main-title-font;
     font-size: 83px;
     font-weight: 900;
     margin-left: -523px;
     margin-top: 243px;
-    color: #011c44;
-    text-shadow: 2px 2px 6px #ff8e8b;
+    text-shadow: $title-shadow-color;
 }
 
 .light-saber {
     height: 45px;
-    transform: rotate(10deg);
     margin-left: -2px;
     margin-right: 6px;
+    transform: rotate(10deg);
 }

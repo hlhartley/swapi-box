@@ -7,7 +7,7 @@ class Navigation extends Component {
     }
 
     passSelected = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.receiveSelected(e.target.name)
     }
 

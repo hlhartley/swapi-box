@@ -172,7 +172,10 @@ class App extends Component {
           navFixed={this.state.navFixed}
           initialNavPosition={this.state.initialNavPosition}
           people={this.state.people}
+          planets={this.state.planets}
+          vehicles={this.state.vehicles}
           receiveSelected={this.receiveSelected}
+          favorites={this.state.favorites}
           // fetchPlanets={this.fetchPlanets}
           // fetchVehicles={this.fetchVehicles}
         />

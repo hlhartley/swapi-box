@@ -17,6 +17,15 @@ exports[`Card should match the snapshot with all data passed in correctly 1`] = 
         />
       </button>
     </h1>
+    <i
+      className="fas fa-globe"
+      style={
+        Object {
+          "fontSize": "40px",
+        }
+      }
+    />
+    <br />
     <p
       className="card-body"
     >

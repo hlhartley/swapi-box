@@ -18,6 +18,7 @@ class App extends Component {
       vehicles: [],
       selected: 'films',
       favorites: [],
+      errorMessage: '',
     };
   }
 
@@ -38,9 +39,17 @@ class App extends Component {
   }
 
   async fetchFilms() {
-    const result = await fetchService({ path: 'films/1' })
-    const films = ({title: result.title, scrollText: result.opening_crawl, episode: result.episode_id})
-    this.setState({films})
+    try {
+      const result = await fetchService({ path: 'films/1' })
+      const films = ({
+        title: result.title,
+        scrollText: result.opening_crawl,
+        episode: result.episode_id
+      })
+      this.setState({ films })
+    } catch(error) {
+      this.setState({errorMessage: error.message })
+    }
   }
 
   extractIdFrom(url) {

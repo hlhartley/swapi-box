@@ -5,6 +5,7 @@ import { shallow } from 'enzyme';
 
 let wrapper;
 describe('App', () => {
+  let mockFilms;
 
   beforeEach(() => {
     wrapper = shallow(<App/>); 
@@ -44,6 +45,7 @@ describe('App', () => {
       vehicles: [],
       selected: 'films',
       favorites: [],
+      errorMessage: '',
     })  
   })
 
@@ -57,16 +59,20 @@ describe('App', () => {
       vehicles: [],
       selected: 'films',
       favorites: [],
+      errorMessage: '',
     };
     
-    expect(wrapper.state()).toEqual({navFixed: false,
+    expect(wrapper.state()).toEqual({
+      navFixed: false,
       initialNavPosition: 0,
       films: [],
       people: [],
       planets: [],
       vehicles: [],
       selected: 'films',
-      favorites: [],});
+      favorites: [],
+      errorMessage: '',
+    });
     wrapper.instance().fixNav()
     expect(wrapper.state()).toEqual(expectedState);
   })
@@ -83,14 +89,17 @@ describe('App', () => {
 
   it('receiveSelected method should set state of selected to selectedButton', () => {
     wrapper.instance().receiveSelected('people')
-    expect(wrapper.state()).toEqual({navFixed: false,
+    expect(wrapper.state()).toEqual({
+      navFixed: false,
       initialNavPosition: 0,
       films: [],
       people: [],
       planets: [],
       vehicles: [],
       selected: 'people',
-      favorites: []});
+      favorites: [],
+      errorMessage: '',
+    });
   })
 
   it('returnCards method returns array of all objects in state of a certain category', () => {
@@ -103,6 +112,7 @@ describe('App', () => {
       vehicles: ['hi', 'bye'],
       selected: 'planets',
       favorites: [],
+      errorMessage: '',
     });
     expect(wrapper.instance().returnCards()).toEqual([1, 2, 3]);
 
@@ -130,7 +140,8 @@ describe('App', () => {
       planets: [],
       vehicles: [],
       selected: 'people',
-      favorites: []
+      favorites: [],
+      errorMessage: '',
     });
 
     expect(wrapper.find('ScrollText').length).toEqual(0)
@@ -155,15 +166,19 @@ describe('App', () => {
       url: "https://swapi.co/api/planets/2/"
   }
     wrapper.instance().clickFavoriteButton(mockObject)
-    expect(wrapper.state()).toEqual({navFixed: false,
+    expect(wrapper.state()).toEqual({
+      navFixed: false,
       initialNavPosition: 0,
       films: [],
       people: [],
       planets: [],
       vehicles: [],
       selected: 'films',
-      favorites: [mockObject]});
+      favorites: [mockObject],
+      errorMessage: '',
+    });
   })
 })
 
-// Test allFetchCalls
+
+

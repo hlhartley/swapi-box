@@ -47,9 +47,29 @@ describe('App', () => {
     })  
   })
 
-  // it.skip('fixNav method', () => {
+  it('fixNav method should setState of navFixed based on window.scrollY position', () => {
+    const expectedState = {
+      navFixed: true,
+      initialNavPosition: 0,
+      film: [],
+      people: [],
+      planets: [],
+      vehicles: [],
+      selected: '',
+      favorites: [],
+    };
     
-  // })
+    expect(wrapper.state()).toEqual({navFixed: false,
+      initialNavPosition: 0,
+      film: [],
+      people: [],
+      planets: [],
+      vehicles: [],
+      selected: '',
+      favorites: [],});
+    wrapper.instance().fixNav()
+    expect(wrapper.state()).toEqual(expectedState);
+  })
 
   it('extractIdFrom method should extract the people id from the URL', () => {
     const mockUrl = 'https://swapi.co/api/people/5/'
@@ -61,23 +81,44 @@ describe('App', () => {
     expect(peopleId2).toEqual('37')
   })
 
-  // it('receiveSelected method', () => {
-    
-  // })
+  it('receiveSelected method should set state of selected to selectedButton', () => {
+    wrapper.instance().receiveSelected('people')
+    expect(wrapper.state()).toEqual({navFixed: false,
+      initialNavPosition: 0,
+      film: [],
+      people: [],
+      planets: [],
+      vehicles: [],
+      selected: 'people',
+      favorites: []});
+  })
 
-  // it('returnCards method', () => {
-    
-  // })
+  it.skip('returnCards method returns array of all objects in state of a certain category', () => {
+    wrapper.instance().returnCards()
+    expect(wrapper.instance().returnCards).toEqual(() => {})
+  })
 
-  // it('renderScreen method', () => {
-    
-  // })
+  it('renderScreen method returns different value based on this.state.selected', () => {
+    wrapper.instance().renderScreen()
+    expect(wrapper.find('ScrollText').length).toEqual(1)
+    expect(wrapper.find('CardContainer').length).toEqual(0)
+    wrapper.setState({navFixed: false,
+      initialNavPosition: 0,
+      film: [],
+      people: [],
+      planets: [],
+      vehicles: [],
+      selected: 'people',
+      favorites: []})
+      expect(wrapper.find('ScrollText').length).toEqual(0)
+      expect(wrapper.find('CardContainer').length).toEqual(1)
+  })
 
-  // it('clickFavoriteBtn method', () => {
+  it('clickFavoriteBtn method ', () => {
     
-  // })
+  })
 
-  // Test allFetchCalls
 })
 
 
+// Test allFetchCalls

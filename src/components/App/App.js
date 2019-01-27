@@ -58,6 +58,7 @@ class App extends Component {
       const people = await response.json()
       const peopleWithIds = people.results.map(person => {
         person.id = this.extractIdFrom(person.url);
+        person.type = 'person'
         // peopleNameLookup[person.id] = person.name;
         return person;
       })
@@ -82,7 +83,7 @@ class App extends Component {
     const unresolvedPromises = people.map((member) => {
       return fetch(member.homeworld)
       .then(response => response.json())
-      .then(homeworld => ({ key: member.id, name: member.name, homeworld: homeworld.name, population: homeworld.population, species: member.species[0] }))
+      .then(homeworld => ({ key: member.id, type: member.type, name: member.name, homeworld: homeworld.name, population: homeworld.population, species: member.species[0] }))
     })
     return Promise.all(unresolvedPromises)
   }
@@ -92,9 +93,9 @@ class App extends Component {
       if(member.species) {
         return fetch(member.species)
         .then(response => response.json())
-        .then(species => ({ id: member.id, name: member.name, homeworld: member.homeworld, population: member.population, species: species.name, language: species.language }))
+        .then(species => ({ id: member.id, type: member.type, name: member.name, homeworld: member.homeworld, population: member.population, species: species.name, language: species.language }))
       } else {
-        return ({ id: member.id, name: member.name, homeworld: member.homeworld, population: member.population, species: 'N/A', language: 'N/A' })
+        return ({ id: member.id, type: member.type, name: member.name, homeworld: member.homeworld, population: member.population, species: 'N/A', language: 'N/A' })
       }
     })
     return Promise.all(unresolvedPromises)
@@ -114,6 +115,8 @@ class App extends Component {
         const matchingPerson = this.state.people.find(person => person.id === residentId)
         return matchingPerson ? matchingPerson.name : 'unknown';
       })
+
+      planet.type = 'planet'
       return planet;
     })
 
@@ -123,7 +126,11 @@ class App extends Component {
   fetchVehicles() {
     fetch('https://swapi.co/api/vehicles/')
       .then(response => response.json())
-      .then(result => this.setState({vehicles: result.results}))
+      .then(result => result.results.map(vehicle => {
+        vehicle.type = 'vehicle'
+        return vehicle;
+      }))
+      .then(vehicle => this.setState({vehicles: vehicle}))
       .catch(error => console.log(error))
   }
 

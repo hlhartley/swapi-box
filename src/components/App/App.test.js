@@ -93,25 +93,48 @@ describe('App', () => {
       favorites: []});
   })
 
-  it.skip('returnCards method returns array of all objects in state of a certain category', () => {
-    wrapper.instance().returnCards()
-    expect(wrapper.instance().returnCards).toEqual(() => {})
+  it('returnCards method returns array of all objects in state of a certain category', () => {
+    wrapper.setState({ 
+      navFixed: false,
+      initialNavPosition: 0,
+      films: [],
+      people: ['a', 'b', 'c'],
+      planets: [1, 2, 3],
+      vehicles: ['hi', 'bye'],
+      selected: 'planets',
+      favorites: [],
+    });
+    expect(wrapper.instance().returnCards()).toEqual([1, 2, 3]);
+
+    wrapper.setState({ 
+      selected: '',
+    });
+    expect(wrapper.instance().returnCards()).toEqual([]);
+
+    wrapper.setState({ 
+      selected: 'vehicles',
+    });
+    expect(wrapper.instance().returnCards()).toEqual(['hi', 'bye']);
   })
 
   it('renderScreen method returns different value based on this.state.selected', () => {
     wrapper.instance().renderScreen()
     expect(wrapper.find('ScrollText').length).toEqual(1)
     expect(wrapper.find('CardContainer').length).toEqual(0)
-    wrapper.setState({navFixed: false,
+
+    wrapper.setState({ 
+      navFixed: false,
       initialNavPosition: 0,
       films: [],
       people: [],
       planets: [],
       vehicles: [],
       selected: 'people',
-      favorites: []})
-      expect(wrapper.find('ScrollText').length).toEqual(0)
-      expect(wrapper.find('CardContainer').length).toEqual(1)
+      favorites: []
+    });
+
+    expect(wrapper.find('ScrollText').length).toEqual(0)
+    expect(wrapper.find('CardContainer').length).toEqual(1)
   })
 
   it('clickFavoriteBtn method adds new object to favorites key in App state', () => {

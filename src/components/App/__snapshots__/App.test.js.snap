@@ -6,10 +6,13 @@ exports[`App should match the snapshot with all data passed in correctly 1`] = `
 >
   <Header />
   <Navigation
+    favorites={Array []}
     initialNavPosition={0}
     navFixed={false}
     people={Array []}
+    planets={Array []}
     receiveSelected={[Function]}
+    vehicles={Array []}
   />
   <ScrollText
     film={Array []}

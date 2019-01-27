@@ -4,7 +4,9 @@ exports[`Card should match the snapshot with all data passed in correctly 1`] = 
 <div
   className="card"
 >
-  <div>
+  <div
+    className="card-div"
+  >
     <h1
       className="card-title"
     >
@@ -21,7 +23,7 @@ exports[`Card should match the snapshot with all data passed in correctly 1`] = 
       className="fas fa-globe"
       style={
         Object {
-          "fontSize": "40px",
+          "fontSize": "45px",
         }
       }
     />

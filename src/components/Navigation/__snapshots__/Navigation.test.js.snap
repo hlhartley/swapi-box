@@ -18,7 +18,9 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
     <i
       className="fas fa-male"
     />
-     PEOPLE
+     PEOPLE [
+    0
+    ]
   </a>
   <a
     className="planets-link"
@@ -29,7 +31,9 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
     <i
       className="fas fa-globe"
     />
-     PLANETS
+     PLANETS [
+    0
+    ]
   </a>
   <a
     className="vehicles-link"
@@ -40,7 +44,9 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
     <i
       className="fas fa-fighter-jet"
     />
-     VEHICLES
+     VEHICLES [
+    0
+    ]
   </a>
   <a
     className="favorites-link"
@@ -51,7 +57,9 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
     <i
       className="far fa-star"
     />
-     FAVORITES [0]
+     FAVORITES [
+    0
+    ]
   </a>
 </div>
 `;

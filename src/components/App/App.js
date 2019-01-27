@@ -176,8 +176,6 @@ class App extends Component {
           vehicles={this.state.vehicles}
           receiveSelected={this.receiveSelected}
           favorites={this.state.favorites}
-          // fetchPlanets={this.fetchPlanets}
-          // fetchVehicles={this.fetchVehicles}
         />
         {this.renderScreen()}
       </div>

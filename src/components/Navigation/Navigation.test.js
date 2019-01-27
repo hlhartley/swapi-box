@@ -21,7 +21,10 @@ describe('Navigation', () => {
       navFixed={275}
       iitialNavPosition={0}
       people={[]}
+      planets={[]}
+      vehicles={[]}
       receiveSelected={() => {}}
+      favorites={[]}
       />); 
     })
     

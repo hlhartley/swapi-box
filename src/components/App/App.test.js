@@ -114,11 +114,33 @@ describe('App', () => {
       expect(wrapper.find('CardContainer').length).toEqual(1)
   })
 
-  it('clickFavoriteBtn method ', () => {
-    
+  it('clickFavoriteBtn method adds new object to favorites key in App state', () => {
+    let mockObject = { 
+      climate: "temperate", 
+      created: "2014-12-10T11:35:48.479000Z",
+      diameter: "12500",
+      edited: "2014-12-20T20:58:18.420000Z",
+      films: ["https://swapi.co/api/films/6/", "https://swapi.co/api/films/1/"],
+      gravity: "1 standard",
+      name: "Alderaan",
+      orbital_period: "364",
+      population: "2000000000",
+      residents: ["https://swapi.co/api/people/5/", "https://swapi.co/api/people/68/", "https://swapi.co/api/people/81/"],
+      rotation_period: "24",
+      surface_water: "40",
+      terrain: "grasslands, mountains",
+      url: "https://swapi.co/api/planets/2/"
+  }
+    wrapper.instance().clickFavoriteButton(mockObject)
+    expect(wrapper.state()).toEqual({navFixed: false,
+      initialNavPosition: 0,
+      film: [],
+      people: [],
+      planets: [],
+      vehicles: [],
+      selected: '',
+      favorites: [mockObject]});
   })
-
 })
-
 
 // Test allFetchCalls

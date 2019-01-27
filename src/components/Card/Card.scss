@@ -1,11 +1,19 @@
 .card {
     background-color: #3f454e;
     color: #f2f2f2;
-    width: 360px;
+    height: 320px;
+    width: 400px;
     padding: 10px;
     text-align: center;
     margin: 22px;
     border-radius: 15px;
+}
+
+.card-div {
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card-title {
@@ -16,6 +24,7 @@
     height: 42px;
     font-size: 1.7em;
     margin: 8px;
+    margin-bottom: 30px;
 }
 
 .card-body {

@@ -9,7 +9,7 @@ class Card extends Component {
     renderCards = () => {
         if(this.props.selected === 'people' || (this.props.selected === 'favorites' && this.props.property.type === 'person')) {
             return (
-                <div>
+                <div className='card-div'>
                 <h1 className='card-title'>{this.props.property.name}
                 <button 
                     onClick={() => this.props.clickFavoriteButton(this.props.property)}
@@ -17,7 +17,7 @@ class Card extends Component {
                     <i className="far fa-star"></i>
                 </button>
                 </h1>
-                <i className="fas fa-male" style={{fontSize: '40px' }}></i>
+                <i className="fas fa-male" style={{fontSize: '45px' }}></i>
                 <br />
                 <p className='card-body'>
                 Homeworld: {this.props.property.homeworld}<br />
@@ -30,7 +30,7 @@ class Card extends Component {
         }
         if(this.props.selected === 'planets' || (this.props.selected === 'favorites' && this.props.property.type === 'planet')) {
             return (
-                <div>
+                <div className='card-div'>
                 <h1 className='card-title'>{this.props.property.name}
                 <button 
                     onClick={() => this.props.clickFavoriteButton(this.props.property)}
@@ -38,7 +38,7 @@ class Card extends Component {
                     <i className="far fa-star"></i>
                 </button>
                 </h1> 
-                <i className="fas fa-globe" style={{fontSize: '40px' }}></i>
+                <i className="fas fa-globe" style={{fontSize: '45px' }}></i>
                 <br />
                 <p className='card-body'>
                 Terrain: {this.props.property.terrain}<br />
@@ -51,7 +51,7 @@ class Card extends Component {
         }
         if(this.props.selected === 'vehicles' || (this.props.selected === 'favorites' && this.props.property.type === 'vehicle')) {
             return (
-                <div>
+                <div className='card-div'>
                 <h1 className='card-title'>{this.props.property.name}
                 <button 
                     onClick={() => this.props.clickFavoriteButton(this.props.property)}
@@ -59,7 +59,7 @@ class Card extends Component {
                     <i className="far fa-star"></i>
                 </button>
                 </h1>
-                <i className="fas fa-fighter-jet" style={{fontSize: '40px' }}></i>
+                <i className="fas fa-fighter-jet" style={{fontSize: '45px' }}></i>
                 <br />
                 <p className='card-body'>
                 Model: {this.props.property.model}<br />

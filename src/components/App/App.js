@@ -16,7 +16,7 @@ class App extends Component {
       planets: [],
       vehicles: [],
       selected: '',
-      favoritedCards: []
+      favorites: [],
     };
   }
 
@@ -37,26 +37,6 @@ class App extends Component {
     }
   }
 
-  // TAKE THIS AWAY IF YOU WANT (decorating each person object with an ID could save you multiple fetch calls later on)
-  // For example, when you are trying to get a planet's residents you could:
-
-  // 1. Use the planet.residents array of URLs like an array of IDs with the same function below
-  // 2. Now you can lookup those people from the list of people you already have from this fetchPeople call (instead of making fetch calls for each for each residentURL)
-  // 3. You could speed up this lookup even more by generating a people 'hash' or object instead of a people array:
-
-      // peopleHash = {
-      //   1: { Person object} // or whatever data you need to display, maybe just the person's name?
-      //   2: { Person object}
-      //   3: { Person object}
-      // }
-
-      // SIDE NOTE: when you look at efficiency of algorithms you want to consider TIME and SPACE (memory usage)
-      // Looking things up in a hash/object is much faster than searching through an array, but by making this hash of {IDs => people objects},
-      // we do have to use more memory on the client's computer.
-
-  // 4. You could then get the planet's residents with something like planet.residents.map(resident => peopleHash[this.extractID(resident)])
-
-
   async fetchFilms() {
     const url = `https://swapi.co/api/films/1/`
     const response = await fetch(url)
@@ -71,9 +51,9 @@ class App extends Component {
 
   async fetchPeople() {
     const peopleArray = [];
-    const peopleNameLookup = {};
-    for(let i=1; i < 10; i++) {
-      const url = `https://swapi.co/api/people/?page=${i}`
+    // const peopleNameLookup = {};
+    // for(let i=1; i < 10; i++) {
+      const url = `https://swapi.co/api/people/?page=1`
       const response = await fetch(url)
       const people = await response.json()
       const peopleWithIds = people.results.map(person => {
@@ -84,7 +64,7 @@ class App extends Component {
       const peopleWithHometowns = await this.fetchHomeworld(peopleWithIds)
       const peopleWithSpecies = await this.fetchSpecies(peopleWithHometowns)
       peopleArray.push(...peopleWithSpecies)
-    }
+    // }
     this.setState({people: peopleArray});
     // this.setState({peopleNameLookup: peopleNameLookup});
   }
@@ -120,7 +100,7 @@ class App extends Component {
     return Promise.all(unresolvedPromises)
   }
 
-  async fetchPlanets() {
+  async fetchPlanets(e) {
     const url = 'https://swapi.co/api/planets/'
     const response = await fetch(url)
     const planets = await response.json()
@@ -159,13 +139,18 @@ class App extends Component {
     if(this.state.selected === '') {
       return <ScrollText film={this.state.film}/>
     } else {
-      return <CardContainer category={this.returnCards()} selected={this.state.selected} clickFavoriteButton={this.clickFavoriteButton}/>
+      return <CardContainer 
+        category={this.returnCards()} 
+        selected={this.state.selected} 
+        clickFavoriteButton={this.clickFavoriteButton}
+      />
     }
   }
 
-  clickFavoriteBtn = (e, cardId) => {
-    e.preventDefault()
-    this.setState({favoritedCards: cardId})
+  clickFavoriteButton = (object) => {
+    if (!this.state.favorites.find(favorite => favorite.name === object.name)) {
+      this.setState({favorites: [...this.state.favorites, object]})
+    }
   }
   
   render() {
@@ -177,7 +162,6 @@ class App extends Component {
           iitialNavPosition={this.state.initialNavPosition}
           people={this.state.people}
           receiveSelected={this.receiveSelected}
-          // fetchPeople={this.fetchPeople}
           // fetchPlanets={this.fetchPlanets}
           // fetchVehicles={this.fetchVehicles}
         />

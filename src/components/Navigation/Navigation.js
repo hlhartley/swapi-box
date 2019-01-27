@@ -18,7 +18,7 @@ class Navigation extends Component {
             <a className='people-link' href='www.google.com' name='people' onClick={this.passSelected.bind(this)}><i className="fas fa-male"></i> PEOPLE</a>
             <a className='planets-link' href='www.google.com' name='planets' onClick={this.passSelected.bind(this)}><i className="fas fa-globe"></i> PLANETS</a>
             <a className='vehicles-link' href='www.google.com' name='vehicles' onClick={this.passSelected.bind(this)}><i className="fas fa-fighter-jet"></i> VEHICLES</a>
-            <a className='favorites-link' href='www.google.com'><i className="far fa-star"></i> FAVORITES [0]</a>
+            <a className='favorites-link' href='www.google.com' name='favorites' onClick={this.passSelected.bind(this)}><i className="far fa-star"></i> FAVORITES [0]</a>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import ScrollText from '../ScrollText/ScrollText';
 import CardContainer from '../CardContainer/CardContainer';
+import { fetchService } from  '../../Helpers/requests.js';
 
 class App extends Component {
   constructor() {
@@ -11,11 +12,11 @@ class App extends Component {
     this.state = {
       navFixed: false,
       initialNavPosition: 0,
-      film: [],
+      films: [],
       people: [],
       planets: [],
       vehicles: [],
-      selected: '',
+      selected: 'films',
       favorites: [],
     };
   }
@@ -23,10 +24,109 @@ class App extends Component {
   async componentDidMount() {
     await this.fetchFilms()
     await this.fetchPeople()
-    await this.fetchPlanets()
-    this.fetchVehicles()
     window.addEventListener('scroll', this.fixNav.bind(this))
     this.setState({initialNavPosition: 250})
+  }
+
+  async makeFetchCall(selected) {
+    const result = await fetchService({ path: selected })
+    if(selected === 'vehicles') {
+      this.fetchVehicles(result)
+    } else if (selected === 'planets') {
+      this.fetchPlanets(result)
+    }
+  }
+
+  async fetchFilms() {
+    const result = await fetchService({ path: 'films/1' })
+    const films = ({title: result.title, scrollText: result.opening_crawl, episode: result.episode_id})
+    this.setState({films})
+  }
+
+  extractIdFrom(url) {
+    return url.split('/').slice(-2, -1)[0];
+  }
+
+  async fetchPeople() {
+    const peopleArray = [];
+    for(let i=1; i < 3; i++) {
+      const result = await fetchService({ path: `people/?page=${i}` })
+      const peopleWithIds = result.results.map(person => {
+        person.id = this.extractIdFrom(person.url);
+        person.type = 'person'
+        return person;
+      })
+      const peopleWithHometowns = await this.fetchHomeworld(peopleWithIds)
+      const peopleWithSpecies = await this.fetchSpecies(peopleWithHometowns)
+      peopleArray.push(...peopleWithSpecies)
+    }
+    this.setState({people: peopleArray});
+  }
+
+  fetchHomeworld(people) {
+    return Promise.all(people.map(async (member) => {
+      const result = await fetchService({ url: member.homeworld });
+      return { 
+        id: member.id,
+        type: member.type,
+        species: member.species[0], 
+        name: member.name, 
+        homeworld: result.name, 
+        population: result.population 
+      }
+    }))
+  }
+
+  fetchSpecies(people) {
+    const unresolvedPromises = people.map(async (member) => {
+      if(member.species) {
+        const result = await fetchService({ url: member.species });
+        return {
+          id: member.id, 
+          type: member.type, 
+          name: member.name, 
+          homeworld: member.homeworld, 
+          population: member.population, 
+          species: result.name, 
+          language: result.language
+        }
+      } else {
+        return ({ 
+          id: member.id, 
+          type: member.type, 
+          name: member.name, 
+          homeworld: member.homeworld, 
+          population: member.population, 
+          species: 'N/A', 
+          language: 'N/A' 
+        })
+      }
+    })
+    return Promise.all(unresolvedPromises)
+  }
+
+  async fetchPlanets(result) {
+    let planetsWithResidentNames = result.results.map((planet) => {
+      planet.residents = planet.residents
+      .map((resident) => {
+        return this.extractIdFrom(resident);
+      })
+      .map((residentId) => {
+        const matchingPerson = this.state.people.find(person => person.id === residentId)
+        return matchingPerson ? matchingPerson.name : 'unknown';
+      })
+      planet.type = 'planet'
+      return planet;
+    })
+    this.setState({planets: planetsWithResidentNames})
+  }
+
+  async fetchVehicles(result) {
+    const vehicles = await result.results.map(vehicle => {
+      vehicle.type = 'vehicle'
+      return vehicle;
+    })
+    this.setState({vehicles: vehicles})
   }
 
   fixNav() {
@@ -37,114 +137,20 @@ class App extends Component {
     }
   }
 
-  async fetchFilms() {
-    const url = `https://swapi.co/api/films/1/`
-    const response = await fetch(url)
-    const result = await response.json()
-    const film = ({title: result.title, scrollText: result.opening_crawl, episode: result.episode_id})
-    this.setState({film})
-  }
-
-  extractIdFrom(url) {
-    return url.split('/').slice(-2, -1)[0];
-  }
-
-  async fetchPeople() {
-    const peopleArray = [];
-    // const peopleNameLookup = {};
-    // for(let i=1; i < 10; i++) {
-      const url = `https://swapi.co/api/people/?page=1`
-      const response = await fetch(url)
-      const people = await response.json()
-      const peopleWithIds = people.results.map(person => {
-        person.id = this.extractIdFrom(person.url);
-        person.type = 'person'
-        // peopleNameLookup[person.id] = person.name;
-        return person;
-      })
-      const peopleWithHometowns = await this.fetchHomeworld(peopleWithIds)
-      const peopleWithSpecies = await this.fetchSpecies(peopleWithHometowns)
-      peopleArray.push(...peopleWithSpecies)
-    // }
-    this.setState({people: peopleArray});
-    // this.setState({peopleNameLookup: peopleNameLookup});
-  }
-
-  fetchHomeworld(people) {
-    // return Promise.all(people.map(async (member) => {
-    //   const response = await fetch(member.homeworld)
-    //   const homeworld = await response.json()
-    //   return { 
-    //     name: member.name, 
-    //     homeworld: homeworld.name, 
-    //     population: homeworld.population 
-    //   }
-    // }))
-    const unresolvedPromises = people.map((member) => {
-      return fetch(member.homeworld)
-      .then(response => response.json())
-      .then(homeworld => ({ key: member.id, type: member.type, name: member.name, homeworld: homeworld.name, population: homeworld.population, species: member.species[0] }))
-    })
-    return Promise.all(unresolvedPromises)
-  }
-
-  fetchSpecies(people) {
-    const unresolvedPromises = people.map((member) => {
-      if(member.species) {
-        return fetch(member.species)
-        .then(response => response.json())
-        .then(species => ({ id: member.id, type: member.type, name: member.name, homeworld: member.homeworld, population: member.population, species: species.name, language: species.language }))
-      } else {
-        return ({ id: member.id, type: member.type, name: member.name, homeworld: member.homeworld, population: member.population, species: 'N/A', language: 'N/A' })
-      }
-    })
-    return Promise.all(unresolvedPromises)
-  }
-
-  async fetchPlanets(e) {
-    const url = 'https://swapi.co/api/planets/'
-    const response = await fetch(url)
-    const planets = await response.json()
-
-    let planetsWithResidentNames = planets.results.map((planet) => {
-      planet.residents = planet.residents.map((resident) => {
-        return this.extractIdFrom(resident);
-        // return this.state.peopleNameLookup[this.extractIdFrom(resident)];
-      })
-      .map((residentId) => {
-        const matchingPerson = this.state.people.find(person => person.id === residentId)
-        return matchingPerson ? matchingPerson.name : 'unknown';
-      })
-
-      planet.type = 'planet'
-      return planet;
-    })
-
-    this.setState({planets: planetsWithResidentNames})
-  }
-
-  fetchVehicles() {
-    fetch('https://swapi.co/api/vehicles/')
-      .then(response => response.json())
-      .then(result => result.results.map(vehicle => {
-        vehicle.type = 'vehicle'
-        return vehicle;
-      }))
-      .then(vehicle => this.setState({vehicles: vehicle}))
-      .catch(error => console.log(error))
-  }
-
   receiveSelected = (selectedButton) => {
-    this.setState({ selected: selectedButton })
-  }
+    this.setState({ selected: selectedButton }, 
+      () => {
+        if (this.state.selected !== 'films') this.makeFetchCall(this.state.selected)
+      })
+    }
 
   returnCards = () => {
-      return this.state[this.state.selected] || []          
+      return this.state[this.state.selected] || [];       
   }
 
   renderScreen = () => {
-    if(this.state.selected === '') {
-      return <ScrollText film={this.state.film}/>
+    if(this.state.selected === 'films') {
+      return <ScrollText films={this.state.films}/>
     } else {
       return <CardContainer 
         category={this.returnCards()} 

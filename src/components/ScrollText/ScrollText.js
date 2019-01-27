@@ -9,9 +9,9 @@ const ScrollText = (props) => {
         <div className="crawl">
             <div className="title">
             <p>Episode IV</p>
-            <h1>{props.film.title}</h1>
+            <h1>{props.films.title}</h1>
             </div>
-            <p className='scroll-text'>{props.film.scrollText}</p>
+            <p className='scroll-text'>{props.films.scrollText}</p>
         </div>
         </section>
         </div>

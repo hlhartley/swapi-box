@@ -2,7 +2,7 @@
     align-items: center;
     background: url(images/r2d2-image.jpg);
     background-repeat: no-repeat;
-    background-size: 102% 311px;
+    background-size: 102% 443px;
     color: black;
     display: flex;
     flex-flow: column;
@@ -17,7 +17,7 @@
     font-weight: 900;
     margin-left: -523px;
     margin-top: 243px;
-    text-shadow: $title-shadow-color;
+    text-shadow: 2px 2px 5px $title-shadow-color;
 }
 
 .light-saber {

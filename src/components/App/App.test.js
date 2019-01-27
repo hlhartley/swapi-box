@@ -38,11 +38,11 @@ describe('App', () => {
     expect(wrapper.state()).toEqual({
       navFixed: false,
       initialNavPosition: 0,
-      film: [],
+      films: [],
       people: [],
       planets: [],
       vehicles: [],
-      selected: '',
+      selected: 'films',
       favorites: [],
     })  
   })
@@ -51,21 +51,21 @@ describe('App', () => {
     const expectedState = {
       navFixed: true,
       initialNavPosition: 0,
-      film: [],
+      films: [],
       people: [],
       planets: [],
       vehicles: [],
-      selected: '',
+      selected: 'films',
       favorites: [],
     };
     
     expect(wrapper.state()).toEqual({navFixed: false,
       initialNavPosition: 0,
-      film: [],
+      films: [],
       people: [],
       planets: [],
       vehicles: [],
-      selected: '',
+      selected: 'films',
       favorites: [],});
     wrapper.instance().fixNav()
     expect(wrapper.state()).toEqual(expectedState);
@@ -85,7 +85,7 @@ describe('App', () => {
     wrapper.instance().receiveSelected('people')
     expect(wrapper.state()).toEqual({navFixed: false,
       initialNavPosition: 0,
-      film: [],
+      films: [],
       people: [],
       planets: [],
       vehicles: [],
@@ -104,7 +104,7 @@ describe('App', () => {
     expect(wrapper.find('CardContainer').length).toEqual(0)
     wrapper.setState({navFixed: false,
       initialNavPosition: 0,
-      film: [],
+      films: [],
       people: [],
       planets: [],
       vehicles: [],
@@ -134,11 +134,11 @@ describe('App', () => {
     wrapper.instance().clickFavoriteButton(mockObject)
     expect(wrapper.state()).toEqual({navFixed: false,
       initialNavPosition: 0,
-      film: [],
+      films: [],
       people: [],
       planets: [],
       vehicles: [],
-      selected: '',
+      selected: 'films',
       favorites: [mockObject]});
   })
 })

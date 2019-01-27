@@ -15,7 +15,7 @@ exports[`App should match the snapshot with all data passed in correctly 1`] = `
     vehicles={Array []}
   />
   <ScrollText
-    film={Array []}
+    films={Array []}
   />
 </div>
 `;

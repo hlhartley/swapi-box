@@ -1,7 +1,7 @@
 .card {
-    background-color: #36888d;
+    background-color: #3f454e;
     color: #f2f2f2;
-    width: 225px;
+    width: 360px;
     padding: 10px;
     text-align: center;
     margin: 22px;
@@ -9,23 +9,28 @@
 }
 
 .card-title {
+    padding-left: 6px;
     display: flex;
-    justify-content: space-around;
-    height: 65px;
+    justify-content: space-between;
+    align-items: center;
+    height: 42px;
+    font-size: 1.7em;
+    margin: 8px;
 }
 
 .card-body {
     padding: 10px;
-    background-color: #f2f2f2;
+    background-color: #cccccc;
     color: black;
     margin: 10px;
+    height: auto;
 }
 
 button {
-    background-color: #36888d;
+    background-color: #3f454e;
     border: none;
 }
 
-.favorite-card-style {
-    background-color: blue;
-}
+// .favorite-card-style {
+//     background-color: blue;
+// }

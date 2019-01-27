@@ -4,34 +4,36 @@ exports[`Card should match the snapshot with all data passed in correctly 1`] = 
 <div
   className="card"
 >
-  <h1
-    className="card-title"
-  >
-    Alderaan
-    <button
-      onClick={[Function]}
+  <div>
+    <h1
+      className="card-title"
     >
-      <i
-        className="far fa-star"
-      />
-    </button>
-  </h1>
-  <p
-    className="card-body"
-  >
-    Terrain: 
-    grasslands, mountains
-    <br />
-    Population: 
-    2000000000
-    <br />
-    Climate: 
-    temperate
-    <br />
-    Residents: 
-    1. https://swapi.co/api/people/5/ 
-    2. https://swapi.co/api/people/68/ 
-    3. https://swapi.co/api/people/81/ 
-  </p>
+      Alderaan
+      <button
+        onClick={[Function]}
+      >
+        <i
+          className="far fa-star"
+        />
+      </button>
+    </h1>
+    <p
+      className="card-body"
+    >
+      Terrain: 
+      grasslands, mountains
+      <br />
+      Population: 
+      2000000000
+      <br />
+      Climate: 
+      temperate
+      <br />
+      Residents: 
+      1. https://swapi.co/api/people/5/ 
+      2. https://swapi.co/api/people/68/ 
+      3. https://swapi.co/api/people/81/ 
+    </p>
+  </div>
 </div>
 `;

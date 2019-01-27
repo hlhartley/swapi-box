@@ -8,14 +8,13 @@ exports[`Card should match the snapshot with all data passed in correctly 1`] = 
     className="card-title"
   >
     Alderaan
-    <a
-      href="www.google.com"
+    <button
       onClick={[Function]}
     >
       <i
         className="far fa-star"
       />
-    </a>
+    </button>
   </h1>
   <p
     className="card-body"

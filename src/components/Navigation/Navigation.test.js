@@ -11,11 +11,12 @@ describe('Navigation', () => {
       navFixed={275}
       iitialNavPosition={0}
       people={[]}
-      receiveSelected={() => {}}  
-    />); 
-  })
-
-  it('renders without crashing', () => {
+      receiveSelected={() => {}}
+      />); 
+    })
+    
+    it('renders without crashing', () => {
+      preventDefault = jest.fn() 
     const div = document.createElement('div');
     ReactDOM.unmountComponentAtNode(div);
 })
@@ -29,7 +30,7 @@ describe('Navigation', () => {
     expect(wrapper).toMatchSnapshot();
   })
 
-  it.skip('passSelected method should call receivedSelected method from App', () => {
-    
+  it('passSelected method should call receivedSelected method from App', () => {
+    wrapper.instance().passSelected()
   })
 })

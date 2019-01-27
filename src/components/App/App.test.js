@@ -43,7 +43,7 @@ describe('App', () => {
       planets: [],
       vehicles: [],
       selected: '',
-      favoritedCards: []
+      favorites: [],
     })  
   })
 

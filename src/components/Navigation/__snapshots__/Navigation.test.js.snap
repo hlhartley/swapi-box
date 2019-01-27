@@ -45,6 +45,8 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
   <a
     className="favorites-link"
     href="www.google.com"
+    name="favorites"
+    onClick={[Function]}
   >
     <i
       className="far fa-star"

@@ -6,7 +6,7 @@ exports[`App should match the snapshot with all data passed in correctly 1`] = `
 >
   <Header />
   <Navigation
-    iitialNavPosition={0}
+    initialNavPosition={0}
     navFixed={false}
     people={Array []}
     receiveSelected={[Function]}

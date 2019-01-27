@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 let wrapper;
 describe('CardContainer', () => {
 
-  const property = { 
+  const cards = [{ 
     climate: "temperate", 
     created: "2014-12-10T11:35:48.479000Z",
     diameter: "12500",
@@ -21,32 +21,30 @@ describe('CardContainer', () => {
     surface_water: "40",
     terrain: "grasslands, mountains",
     url: "https://swapi.co/api/planets/2/"
-}
+  }]
 
   beforeEach(() => {
     wrapper = shallow(<CardContainer
-      key={property.url} 
-      property={property} 
-      selected={'false'} 
+      category={cards} 
+      selected={'people'} 
       clickFavoriteButton={() => {}}
     />); 
   })
 
     it('renders without crashing', () => {
       const div = document.createElement('div');
-      // ReactDOM.render(<CardContainer />, div);
       ReactDOM.unmountComponentAtNode(div);
     })
 
-    it.skip('should exist', () => {   
+    it('should exist', () => {   
       expect(wrapper).toBeDefined()
     })
 
-    it.skip('should match the snapshot with all data passed in correctly', () => {
+    it('should match the snapshot with all data passed in correctly', () => {
       expect(wrapper).toMatchSnapshot();
     })
 
-    it.skip('should render the Card component', () => {
+    it('should render the Card component', () => {
       expect(wrapper.find('Card').length).toEqual(1)
     })
   })

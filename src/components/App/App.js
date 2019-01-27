@@ -155,7 +155,11 @@ class App extends Component {
   }
 
   clickFavoriteButton = (object) => {
+    // const allFavoritedCards = document.querySelectorAll('.card')
     if (!this.state.favorites.find(favorite => favorite.name === object.name)) {
+      // for (let i = 0; i < allFavoritedCards.length; ++i) {
+      //   allFavoritedCards[i].classList.add('favorite-card-style');
+      // }
       this.setState({favorites: [...this.state.favorites, object]})
     }
   }
@@ -166,7 +170,7 @@ class App extends Component {
         <Header />
         <Navigation 
           navFixed={this.state.navFixed}
-          iitialNavPosition={this.state.initialNavPosition}
+          initialNavPosition={this.state.initialNavPosition}
           people={this.state.people}
           receiveSelected={this.receiveSelected}
           // fetchPlanets={this.fetchPlanets}

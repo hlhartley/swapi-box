@@ -13,11 +13,11 @@ class App extends Component {
       navFixed: false,
       initialNavPosition: 0,
       films: {},
-      people: [],
-      planets: [],
-      vehicles: [],
+      people: JSON.parse(localStorage.getItem('people')) || [],
+      planets: JSON.parse(localStorage.getItem('planets')) || [],
+      vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
       selected: 'films',
-      favorites: [],
+      favorites: JSON.parse(localStorage.getItem('favorites')) || [],
       errorMessage: '',
     };
   }
@@ -70,7 +70,7 @@ class App extends Component {
       const peopleWithSpecies = await this.fetchSpecies(peopleWithHometowns)
       peopleArray.push(...peopleWithSpecies)
     }
-    this.setState({people: peopleArray});
+    this.setState({people: peopleArray}, () => localStorage.setItem('people', JSON.stringify(peopleArray)))
   }
 
   fetchHomeworld(people) {
@@ -128,7 +128,7 @@ class App extends Component {
       planet.type = 'planet'
       return planet;
     })
-    this.setState({planets: planetsWithResidentNames})
+    this.setState({planets: planetsWithResidentNames}, () => localStorage.setItem('planets', JSON.stringify(planetsWithResidentNames)))
   }
 
   async fetchVehicles(result) {
@@ -136,7 +136,7 @@ class App extends Component {
       vehicle.type = 'vehicle'
       return vehicle;
     })
-    this.setState({vehicles: vehicles})
+    this.setState({vehicles: vehicles}, () => localStorage.setItem('vehicles', JSON.stringify(vehicles)))
   }
 
   fixNav() {
@@ -175,7 +175,8 @@ class App extends Component {
 
   clickFavoriteButton = (object) => {
     if (!this.state.favorites.find(favorite => favorite.name === object.name)) {
-      this.setState({favorites: [...this.state.favorites, object]})
+      this.setState({favorites: [...this.state.favorites, object]}, () => localStorage.setItem('favorites', JSON.stringify([...this.state.favorites, object])))
+      // {if(!this.state.favorites.includes(object)){localStorage.setItem('favorites', JSON.stringify([...this.state.favorites, object]))}}
     }
   }
   

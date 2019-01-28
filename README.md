@@ -1,7 +1,10 @@
 # SWAPI-box
 A web-based React app created using data from the Star Wars API. Users can search through the database to find their favorite characters, planets, and vehicles. If they click the 'star/favorites' button they can save their favorite cards to local storage and see a collection of them in the favorites section of the app. 
 
-## Final App Screenshot:
+## Final App Main Page Screenshot:
+![Screenshot](swapi-box-main-page-screenshot.png)
+
+## Final App Component Screenshot:
 ![Screenshot](swapi-box-final-screenshot.png)
 
 ## Main Page Wireframe:

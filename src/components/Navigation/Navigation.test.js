@@ -42,7 +42,7 @@ describe('Navigation', () => {
       expect(wrapper).toMatchSnapshot();
     })
     
-    it.skip('passSelected method should call receivedSelected method from App', () => {
+    it('passSelected method should call receivedSelected method from App', () => {
     const mockEvent = mockEventFactory('people');
     wrapper.instance().passSelected(mockEvent);
     expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1)

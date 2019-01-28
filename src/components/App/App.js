@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await this.fetchFilms()
+    // await this.fetchFilms()
     await this.fetchPeople()
     window.addEventListener('scroll', this.fixNav.bind(this))
     this.setState({initialNavPosition: 250})
@@ -184,12 +184,14 @@ class App extends Component {
     if (!this.state.favorites.find(favorite => favorite.name === object.name)) {
       this.setState({favorites: [...this.state.favorites, object]}, () => localStorage.setItem('favorites', JSON.stringify([...this.state.favorites, object])))
       // need to remove favorite from local Storage, state, and make favorite button not be highlighted anymore
-      // {if(!this.state.favorites.includes(object)){localStorage.setItem('favorites', JSON.stringify([...this.state.favorites, object]))}}
-    // } else if(this.state.favorites.find(favorite => favorite.name === object.name)){
-    //   localStorage.removeItem('favorites')
-    //   localStorage.setItem('favorites', JSON.stringify([...this.state.favorites]))
+
+    } else {
+      debugger
+      const filteredFavorites = this.state.favorites.filter(favorite => favorite.name !== object.name);
+      this.setState({favorites: filteredFavorites}, () => localStorage.setItem('favorites', JSON.stringify(filteredFavorites)))
     }
   }
+  
   
   render() {
     return (

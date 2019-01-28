@@ -49,7 +49,7 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
     onClick={[Function]}
   >
     <i
-      className="far fa-star"
+      className="fas fa-star"
     />
      FAVORITES [
     0

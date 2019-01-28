@@ -183,10 +183,7 @@ class App extends Component {
   clickFavoriteButton = (object) => {
     if (!this.state.favorites.find(favorite => favorite.name === object.name)) {
       this.setState({favorites: [...this.state.favorites, object]}, () => localStorage.setItem('favorites', JSON.stringify([...this.state.favorites, object])))
-      // need to remove favorite from local Storage, state, and make favorite button not be highlighted anymore
-
     } else {
-      debugger
       const filteredFavorites = this.state.favorites.filter(favorite => favorite.name !== object.name);
       this.setState({favorites: filteredFavorites}, () => localStorage.setItem('favorites', JSON.stringify(filteredFavorites)))
     }

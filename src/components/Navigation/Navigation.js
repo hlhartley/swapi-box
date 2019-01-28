@@ -15,9 +15,7 @@ class Navigation extends Component {
 
     passSelected = (e) => {
         e.preventDefault();
-        // if(e.target.name !== 'favorites') {
-            this.props.receiveSelected(e.target.name)
-        // }
+        this.props.receiveSelected(e.target.name)
         this.changeButtonStatus(e.target.name)
     }
 

@@ -8,10 +8,11 @@ const ScrollText = (props) => {
         <section className="star-wars">
         <div className="crawl">
             <div className="title">
-            <p>Episode IV</p>
+            <p>Episode IV </p>
             <h1>{props.films.title}</h1>
             </div>
             <p className='scroll-text'>{props.films.scrollText}</p>
+            <p>- released: {props.films.release}</p>
         </div>
         </section>
         </div>

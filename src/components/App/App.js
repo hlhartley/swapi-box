@@ -44,7 +44,8 @@ class App extends Component {
       const films = ({
         title: result.title,
         scrollText: result.opening_crawl,
-        episode: result.episode_id
+        episode: result.episode_id,
+        release: result.release_date,
       })
       this.setState({ films })
     } catch(error) {
@@ -170,11 +171,7 @@ class App extends Component {
   }
 
   clickFavoriteButton = (object) => {
-    // const allFavoritedCards = document.querySelectorAll('.card')
     if (!this.state.favorites.find(favorite => favorite.name === object.name)) {
-      // for (let i = 0; i < allFavoritedCards.length; ++i) {
-      //   allFavoritedCards[i].classList.add('favorite-card-style');
-      // }
       this.setState({favorites: [...this.state.favorites, object]})
     }
   }

@@ -17,7 +17,7 @@ exports[`ScrollText should match the snapshot with all data passed in correctly 
         className="title"
       >
         <p>
-          Episode IV
+          Episode IV 
         </p>
         <h1>
           A New Hope
@@ -34,6 +34,9 @@ the evil Galactic Empire.
 
 During the battle, Rebel
 spies managed to steal secre…
+      </p>
+      <p>
+        - released: 
       </p>
     </div>
   </section>

@@ -2,12 +2,13 @@
     align-items: center;
     background: url(images/r2d2-image.jpg);
     background-repeat: no-repeat;
-    background-size: 102% 443px;
+    background-size: cover;
     color: black;
     display: flex;
     flex-flow: column;
     height: 225px;
     justify-content: center;
+    background-position: 0 10%;
 }
 
 .header-text {

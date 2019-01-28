@@ -11,10 +11,10 @@ A web-based React app created using data from the Star Wars API. Users can searc
 ![Wireframe](swapi-box-wireframe-component.png)
 
 ## Installation Steps:
-Clone the repo: git clone https://github.com/ericweissman/icecream_whateverly.git
-Install dependencies: npm install
-Start Local Host: npm start
-For testing suite: npm test
+- Clone the repo: git clone https://github.com/hlhartley/swapi-box.git
+- Install dependencies: npm install
+- Start Local Host: npm start
+- For testing suite: npm test
 
 ## Primary Technologies Used:
 - React

@@ -8,10 +8,8 @@ const Card = (props) => {
             return (
                 <div className='card-div'>
                 <h1 className='card-title'>{props.property.name}
-                <button 
-                    onClick={() => props.clickFavoriteButton(props.property)}
-                >
-                    <i className="far fa-star"></i>
+                <button onClick={() => props.clickFavoriteButton(props.property)}>
+                    <i className={!props.favorites.includes(props.property) ? "far fa-star" : "fas fa-star"}></i>
                 </button>
                 </h1>
                 <i className="fas fa-male" style={{fontSize: '45px' }}></i>
@@ -32,7 +30,7 @@ const Card = (props) => {
                 <button 
                     onClick={() => props.clickFavoriteButton(props.property)}
                 >
-                    <i className="far fa-star"></i>
+                    <i className={!props.favorites.includes(props.property) ? "far fa-star" : "fas fa-star"}></i>
                 </button>
                 </h1> 
                 <i className="fas fa-globe" style={{fontSize: '45px' }}></i>
@@ -53,7 +51,7 @@ const Card = (props) => {
                 <button 
                     onClick={() => props.clickFavoriteButton(props.property)}
                 >
-                    <i className="far fa-star"></i>
+                    <i className={!props.favorites.includes(props.property) ? "far fa-star" : "fas fa-star"}></i>
                 </button>
                 </h1>
                 <i className="fas fa-fighter-jet" style={{fontSize: '45px' }}></i>

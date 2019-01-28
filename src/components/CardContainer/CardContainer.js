@@ -13,6 +13,7 @@ const CardContainer = (props) => {
                     selected={props.selected} 
                     clickFavoriteButton={props.clickFavoriteButton}
                     favoritedCards={props.favoritedCards}
+                    favorites={props.favorites}
                 />)
             })}
         </div>

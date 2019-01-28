@@ -168,6 +168,7 @@ class App extends Component {
         category={this.returnCards()} 
         selected={this.state.selected} 
         clickFavoriteButton={this.clickFavoriteButton}
+        favorites={this.state.favorites}
       />
     }
   }

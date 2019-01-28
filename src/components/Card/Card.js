@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../main.scss';
+import PropTypes from 'prop-types';
 
 const Card = (props) => {
     const renderCards = () => {
@@ -72,6 +73,13 @@ const Card = (props) => {
             {renderCards()}
         </div>
     )
+}
+
+Card.propTypes = {
+    property: PropTypes.object,
+    selected: PropTypes.string,
+    clickFavoriteButton: PropTypes.func,
+    favoritedCards: PropTypes.array
 }
 
 export default Card;

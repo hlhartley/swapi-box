@@ -9,6 +9,7 @@ exports[`Header should match the snapshot with all data passed in correctly 1`] 
   >
     SWAPI
     <img
+      alt="light saber"
       className="light-saber"
       src="light-saber.png"
     />

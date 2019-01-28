@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       navFixed: false,
       initialNavPosition: 0,
-      films: [],
+      films: {},
       people: [],
       planets: [],
       vehicles: [],

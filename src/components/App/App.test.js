@@ -5,7 +5,6 @@ import { shallow } from 'enzyme';
 
 let wrapper;
 describe('App', () => {
-  let mockFilms;
 
   beforeEach(() => {
     wrapper = shallow(<App/>); 
@@ -39,7 +38,7 @@ describe('App', () => {
     expect(wrapper.state()).toEqual({
       navFixed: false,
       initialNavPosition: 0,
-      films: [],
+      films: {},
       people: [],
       planets: [],
       vehicles: [],
@@ -53,7 +52,7 @@ describe('App', () => {
     const expectedState = {
       navFixed: true,
       initialNavPosition: 0,
-      films: [],
+      films: {},
       people: [],
       planets: [],
       vehicles: [],
@@ -65,7 +64,7 @@ describe('App', () => {
     expect(wrapper.state()).toEqual({
       navFixed: false,
       initialNavPosition: 0,
-      films: [],
+      films: {},
       people: [],
       planets: [],
       vehicles: [],
@@ -92,7 +91,7 @@ describe('App', () => {
     expect(wrapper.state()).toEqual({
       navFixed: false,
       initialNavPosition: 0,
-      films: [],
+      films: {},
       people: [],
       planets: [],
       vehicles: [],
@@ -106,7 +105,7 @@ describe('App', () => {
     wrapper.setState({ 
       navFixed: false,
       initialNavPosition: 0,
-      films: [],
+      films: {},
       people: ['a', 'b', 'c'],
       planets: [1, 2, 3],
       vehicles: ['hi', 'bye'],
@@ -135,7 +134,7 @@ describe('App', () => {
     wrapper.setState({ 
       navFixed: false,
       initialNavPosition: 0,
-      films: [],
+      films: {},
       people: [],
       planets: [],
       vehicles: [],
@@ -169,7 +168,7 @@ describe('App', () => {
     expect(wrapper.state()).toEqual({
       navFixed: false,
       initialNavPosition: 0,
-      films: [],
+      films: {},
       people: [],
       planets: [],
       vehicles: [],

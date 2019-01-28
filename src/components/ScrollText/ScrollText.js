@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../main.scss';
+import PropTypes from 'prop-types';
 
 const ScrollText = (props) => {
     return (
@@ -17,6 +18,10 @@ const ScrollText = (props) => {
         </section>
         </div>
     )
+}
+
+ScrollText.propTypes = {
+    films: PropTypes.object,
 }
 
 export default ScrollText;

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../main.scss';
 import Card from '../Card/Card';
-// import { v4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 const CardContainer = (props) => {
     return (
@@ -17,6 +17,12 @@ const CardContainer = (props) => {
             })}
         </div>
     )
+}
+
+CardContainer.propTypes = {
+    category: PropTypes.array,
+    selected: PropTypes.string,
+    clickFavoriteButton: PropTypes.func
 }
 
 export default CardContainer;

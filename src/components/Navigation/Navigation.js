@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../main.scss';
+import PropTypes from 'prop-types';
 
 const Navigation = (props) => {
     const passSelected = (e) => {
@@ -16,5 +17,15 @@ const Navigation = (props) => {
             <a className='favorites-link' href='google.com' name='favorites' onClick={passSelected.bind(this)}><i className="far fa-star"></i> FAVORITES [{props.favorites.length}]</a>
         </div>
     )}
+
+Navigation.propTypes = {
+    navFixed: PropTypes.bool,
+    initialNavPosition: PropTypes.number,
+    people: PropTypes.array,
+    planets: PropTypes.array,
+    vehicles: PropTypes.array,
+    receiveSelected: PropTypes.func,
+    favorites: PropTypes.array,
+}
 
 export default Navigation;

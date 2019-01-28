@@ -2,7 +2,7 @@
 
 exports[`Navigation should match the snapshot with all data passed in correctly 1`] = `
 <div
-  className="navigation-container fixed-nav"
+  className="navigation-container"
 >
   <div
     className="logo"
@@ -11,42 +11,40 @@ exports[`Navigation should match the snapshot with all data passed in correctly 
   </div>
   <a
     className="people-link"
+    href="google.com"
     name="people"
     onClick={[Function]}
   >
     <i
       className="fas fa-male"
     />
-     PEOPLE [
-    0
-    ]
+     PEOPLE
   </a>
   <a
     className="planets-link"
+    href="google.com"
     name="planets"
     onClick={[Function]}
   >
     <i
       className="fas fa-globe"
     />
-     PLANETS [
-    0
-    ]
+     PLANETS
   </a>
   <a
     className="vehicles-link"
+    href="google.com"
     name="vehicles"
     onClick={[Function]}
   >
     <i
       className="fas fa-fighter-jet"
     />
-     VEHICLES [
-    0
-    ]
+     VEHICLES
   </a>
   <a
     className="favorites-link"
+    href="google.com"
     name="favorites"
     onClick={[Function]}
   >

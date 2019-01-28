@@ -150,7 +150,9 @@ class App extends Component {
   receiveSelected = (selectedButton) => {
     this.setState({ selected: selectedButton }, 
       () => {
-        if (this.state.selected !== 'films') this.makeFetchCall(this.state.selected)
+        if (this.state.selected !== 'films' && this.state.selected !== 'favorites') {
+          this.makeFetchCall(this.state.selected)
+        }
       })
     }
 

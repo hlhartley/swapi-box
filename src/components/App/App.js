@@ -13,9 +13,9 @@ class App extends Component {
       navFixed: false,
       initialNavPosition: 0,
       films: {},
-      people: JSON.parse(localStorage.getItem('people')) || [],
-      planets: JSON.parse(localStorage.getItem('planets')) || [],
-      vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
+      people: [],
+      planets: [],
+      vehicles: [],
       selected: 'films',
       favorites: JSON.parse(localStorage.getItem('favorites')) || [],
       errorMessage: '',
@@ -30,6 +30,7 @@ class App extends Component {
   }
 
   async makeFetchCall(selected) {
+    // bug with fetchService -- page not loading, inconsistent
     const result = await fetchService({ path: selected })
     if(selected === 'vehicles') {
       this.fetchVehicles(result)
@@ -70,7 +71,7 @@ class App extends Component {
       const peopleWithSpecies = await this.fetchSpecies(peopleWithHometowns)
       peopleArray.push(...peopleWithSpecies)
     }
-    this.setState({people: peopleArray}, () => localStorage.setItem('people', JSON.stringify(peopleArray)))
+    this.setState({people: peopleArray})
   }
 
   fetchHomeworld(people) {
@@ -107,8 +108,8 @@ class App extends Component {
           name: member.name, 
           homeworld: member.homeworld, 
           population: member.population, 
-          species: 'N/A', 
-          language: 'N/A' 
+          species: 'n/a', 
+          language: 'n/a' 
         })
       }
     })
@@ -128,7 +129,7 @@ class App extends Component {
       planet.type = 'planet'
       return planet;
     })
-    this.setState({planets: planetsWithResidentNames}, () => localStorage.setItem('planets', JSON.stringify(planetsWithResidentNames)))
+    this.setState({planets: planetsWithResidentNames})
   }
 
   async fetchVehicles(result) {
@@ -136,7 +137,7 @@ class App extends Component {
       vehicle.type = 'vehicle'
       return vehicle;
     })
-    this.setState({vehicles: vehicles}, () => localStorage.setItem('vehicles', JSON.stringify(vehicles)))
+    this.setState({vehicles: vehicles})
   }
 
   fixNav() {
@@ -148,10 +149,16 @@ class App extends Component {
   }
 
   receiveSelected = (selectedButton) => {
+    console.log('recieve selected called', this.state.selected)
     this.setState({ selected: selectedButton }, 
       () => {
-        if (this.state.selected !== 'films' && this.state.selected !== 'favorites') {
-          this.makeFetchCall(this.state.selected)
+        // For some reason, this.state.selected was coming back undefined in certain cases (eg: switching tabs quickly)
+        // Was this some sort of race condition issue?? This is the reason for the check below on 158
+        console.log("setstate callback", this.state.selected)
+        if (this.state.selected) { 
+          if (this.state.selected !== 'films' && (this.state.selected !== 'favorites' && !this.state[this.state.selected].length)) {
+            this.makeFetchCall(this.state.selected)
+          }
         }
       })
     }
@@ -176,7 +183,11 @@ class App extends Component {
   clickFavoriteButton = (object) => {
     if (!this.state.favorites.find(favorite => favorite.name === object.name)) {
       this.setState({favorites: [...this.state.favorites, object]}, () => localStorage.setItem('favorites', JSON.stringify([...this.state.favorites, object])))
+      // need to remove favorite from local Storage, state, and make favorite button not be highlighted anymore
       // {if(!this.state.favorites.includes(object)){localStorage.setItem('favorites', JSON.stringify([...this.state.favorites, object]))}}
+    // } else if(this.state.favorites.find(favorite => favorite.name === object.name)){
+    //   localStorage.removeItem('favorites')
+    //   localStorage.setItem('favorites', JSON.stringify([...this.state.favorites]))
     }
   }
   

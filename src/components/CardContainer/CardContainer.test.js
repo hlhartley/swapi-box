@@ -28,6 +28,7 @@ describe('CardContainer', () => {
       category={cards} 
       selected={'people'} 
       clickFavoriteButton={() => {}}
+      favorites={[]}
     />); 
   })
 

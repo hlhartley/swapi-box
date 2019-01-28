@@ -6,6 +6,7 @@ exports[`CardContainer should match the snapshot with all data passed in correct
 >
   <Card
     clickFavoriteButton={[Function]}
+    favorites={Array []}
     key="Alderaan"
     property={
       Object {

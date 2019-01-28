@@ -27,6 +27,7 @@ describe('Card', () => {
         wrapper = shallow(<Card 
             property={property} 
             selected= 'planets'
+            favorites={[]}
         />); 
     })
 

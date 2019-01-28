@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    // await this.fetchFilms()
+    await this.fetchFilms()
     await this.fetchPeople()
     window.addEventListener('scroll', this.fixNav.bind(this))
     this.setState({initialNavPosition: 250})

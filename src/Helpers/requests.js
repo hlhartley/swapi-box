@@ -1,5 +1,5 @@
 export const fetchService = async ({ path, url }) => {
-    const endpoint = url ? url : `https://swapi.co/api/${path}`;
+    const endpoint = url ? url : `https://swapi.dev/api/${path}`;
     const response = await fetch(endpoint);
 
     if (response.status >= 300) {
